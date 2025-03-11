@@ -19,6 +19,11 @@ class UserResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
+    protected static ?string $navigationGroup = "Configurações";
+    protected static ?string $modelLabel = 'Usuário';
+    protected static ?string $pluralModelLabel = 'Usuários';
+    protected static ?string $navigationLabel = 'Usuários';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -85,5 +90,10 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
+    }
+    
+    public static function getNavigationBadge(): ?string
+    {
+        return self::getModel()::count();
     }
 }

@@ -17,7 +17,10 @@ class ServiceResource extends Resource
 {
     protected static ?string $model = Service::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-wrench-screwdriver';
+    protected static ?string $modelLabel = 'Serviço';
+    protected static ?string $pluralModelLabel = 'Serviços';
+    protected static ?string $navigationLabel = 'Serviços';
 
     public static function form(Form $form): Form
     {
@@ -120,5 +123,10 @@ class ServiceResource extends Resource
             'create' => Pages\CreateService::route('/create'),
             'edit' => Pages\EditService::route('/{record}/edit'),
         ];
+    }
+    
+    public static function getNavigationBadge(): ?string
+    {
+        return self::getModel()::count();
     }
 }

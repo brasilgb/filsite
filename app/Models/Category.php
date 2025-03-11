@@ -19,9 +19,9 @@ class Category extends Model
         return $this->hasMany(Category::class)->with('categories');
     }
 
-    public function posts(): BelongsToMany
+    public function services(): BelongsToMany
     {
-        return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Service::class);
     }
 
     public function products(): BelongsToMany

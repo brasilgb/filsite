@@ -7,6 +7,7 @@ use Filament\Pages\Page;
 use Filament\Forms\Form;
 use Filament\Forms\Components\TextInput;
 use Filament\Actions\Action;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Support\Exceptions\Halt;
 use Filament\Notifications\Notification;
@@ -16,9 +17,13 @@ class EditSetting extends Page
     use InteractsWithForms;
     public ?array $data = [];
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'heroicon-o-adjustments-vertical';
 
     protected static string $view = 'filament.pages.edit-setting';
+
+    protected static ?string $navigationGroup = "Configurações";
+
+    protected static ?string $navigationLabel = 'Ajustes';
 
     public function mount(): void
     {
@@ -36,8 +41,11 @@ class EditSetting extends Page
     {
         return $form
             ->schema([
-                TextInput::make('title')
-                    ->required(),
+                Section::make()
+                    ->schema([
+                        TextInput::make('title')
+                            ->required(),
+                    ])
             ])
             ->statePath('data');
     }

@@ -25,24 +25,26 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->maxContentWidth('full')
             ->default()
             ->id('admin')
             ->path('admin')
             ->login()
             ->colors([
-                // 'primary' => Color::Blue,
-                'primary' => "#0d3b85",
+                'primary' => "#0C356A",
             ])
             ->sidebarWidth('20rem')
             ->sidebarCollapsibleOnDesktop()
             ->collapsedSidebarWidth('6rem')
+            ->collapsibleNavigationGroups(false)
             // ->topNavigation()
             ->sidebarFullyCollapsibleOnDesktop()
-            // ->theme(asset('css/filament/admin/theme.css'))
+            ->theme(asset('css/filament/admin/theme.css'))
             ->font('Poppins', provider: GoogleFontProvider::class)
             ->darkMode(true)
-            ->brandName('')
-            ->brandLogo(asset('images/logo.png'))
+            ->brandName('Ok')
+            // ->brandLogo(asset('images/logo.png'))
+            ->brandLogo(fn() => view('filament.admin.logo'))
             ->favicon(asset('images/logo.png'))
             ->brandLogoHeight('3rem')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
@@ -75,6 +77,12 @@ class AdminPanelProvider extends PanelProvider
                     // ->url(fn (): string => User::getUrl())
                     ->icon('heroicon-o-cog-6-tooth'),
                 'logout' => MenuItem::make()->label('Sair'),
-            ]);
+            ])
+            ->renderHook(
+                // This line tells us where to render it
+                'panels::footer',
+                // This is the view that will be rendered
+                fn () => view('filament.customFooter'),
+            )->spa();
     }
 }

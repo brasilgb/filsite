@@ -17,7 +17,10 @@ class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-device-phone-mobile';
+    protected static ?string $modelLabel = 'Produto';
+    protected static ?string $pluralModelLabel = 'Produtos';
+    protected static ?string $navigationLabel = 'Produtos';
 
     public static function form(Form $form): Form
     {
@@ -136,5 +139,10 @@ class ProductResource extends Resource
             'create' => Pages\CreateProduct::route('/create'),
             'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
+    }
+    
+    public static function getNavigationBadge(): ?string
+    {
+        return self::getModel()::count();
     }
 }
