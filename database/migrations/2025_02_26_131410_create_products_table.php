@@ -19,14 +19,10 @@ return new class extends Migration
             $table->text('summary')->nullable();
             $table->text('content')->nullable();
             $table->string('featured');
-            $table->string('prodfeatured')->nullable();
-            $table->integer('social');
             $table->integer('active');
             $table->string('url')->nullable();
-            $table->integer('menu')->nullable();
             $table->decimal('valnormal', 6, 2)->nullable();
             $table->decimal('valpromo', 6, 2)->nullable();
-            $table->integer('linked')->nullable();
             $table->timestamps();
         });
     }

@@ -26,6 +26,7 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->maxContentWidth('full')
+            
             ->default()
             ->id('admin')
             ->path('admin')
@@ -80,7 +81,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->renderHook(
                 // This line tells us where to render it
-                'panels::footer',
+                'panels::sidebar.footer',
                 // This is the view that will be rendered
                 fn () => view('filament.customFooter'),
             )->spa();

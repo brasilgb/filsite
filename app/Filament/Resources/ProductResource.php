@@ -27,43 +27,38 @@ class ProductResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('brand')
+                    ->label('Fabricante')
                     ->maxLength(255)
                     ->default(null),
                 Forms\Components\TextInput::make('title')
+                    ->label('Nome')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('summary')
+                    ->label('Breve descrição')
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('content')
+                    ->label('Descrição completa')
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('featured')
+                    ->label('Imagem destacada')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('prodfeatured')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('social')
-                    ->required()
-                    ->numeric(),
                 Forms\Components\TextInput::make('active')
+                    ->label('Ativar produto')
                     ->required()
                     ->numeric(),
                 Forms\Components\TextInput::make('url')
+                    ->label('URL Externa')
                     ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('menu')
-                    ->numeric()
                     ->default(null),
                 Forms\Components\TextInput::make('valnormal')
                     ->numeric()
                     ->default(null),
                 Forms\Components\TextInput::make('valpromo')
-                    ->numeric()
-                    ->default(null),
-                Forms\Components\TextInput::make('linked')
                     ->numeric()
                     ->default(null),
             ]);
@@ -73,25 +68,13 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('featured')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('brand')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('featured')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('prodfeatured')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('social')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('active')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('url')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('menu')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('valnormal')
@@ -100,17 +83,11 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('valpromo')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('linked')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('cadastro')
+                    ->dateTime("d/m/Y H:i")
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: false),
             ])
             ->filters([
                 //
@@ -140,7 +117,7 @@ class ProductResource extends Resource
             'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
     }
-    
+
     public static function getNavigationBadge(): ?string
     {
         return self::getModel()::count();
