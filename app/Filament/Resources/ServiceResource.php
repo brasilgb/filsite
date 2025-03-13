@@ -6,7 +6,12 @@ use App\Filament\Resources\ServiceResource\Pages;
 use App\Filament\Resources\ServiceResource\RelationManagers;
 use App\Models\Service;
 use Filament\Forms;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
+use Filament\Notifications\Notification;
+use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -26,37 +31,39 @@ class ServiceResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('summary')
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('content')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('featured')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('social')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('active')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('url')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('menu')
-                    ->numeric()
-                    ->default(null),
-                Forms\Components\TextInput::make('type')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('linked')
-                    ->numeric()
-                    ->default(null),
+                Section::make()
+                    ->schema([
+                        Grid::make()->schema([
+                            Forms\Components\Select::make('categories')
+                                ->label('Categorias')
+                                ->multiple()
+                                ->relationship('categories', 'name')
+                                ->searchable(),
+                            Forms\Components\TextInput::make('title')
+                                ->label('Serviço')
+                                ->live()
+                                ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('slug')
+                                ->required()
+                                ->maxLength(255)
+                        ])->columns(3),
+
+                        Forms\Components\Textarea::make('summary')
+                            ->label('Breve descrição')
+                            ->required()
+                            ->columnSpanFull(),
+                        Forms\Components\RichEditor::make('content')
+                            ->label('Descrição completa')
+                            ->required()
+                            ->columnSpanFull(),
+                        Forms\Components\FileUpload::make('featured')
+                            ->label('Imagem destacada')
+                            ->image(),
+                        Forms\Components\Toggle::make('active')
+                            ->label('Ativar serviço'),
+                    ])
             ]);
     }
 
@@ -64,43 +71,33 @@ class ServiceResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('featured')
+                    ->label('Destaque')
+                    ->circular(),
                 Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('featured')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('social')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('active')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('url')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('menu')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('type')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('linked')
-                    ->numeric()
-                    ->sortable(),
+                    ->label('Serviço'),
+                Tables\Columns\TextColumn::make('categories.name')
+                    ->label('Categorias'),
+                Tables\Columns\ToggleColumn::make('active')
+                    ->label('Ativo'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('Cadastro')
+                    ->dateTime("d/m/Y H:i")
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->successNotification(
+                        Notification::make()
+                            ->success()
+                            ->title('Serviço deletado')
+                            ->body('O serviço foi deletado com sucesso.')
+                    ),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -124,7 +121,7 @@ class ServiceResource extends Resource
             'edit' => Pages\EditService::route('/{record}/edit'),
         ];
     }
-    
+
     public static function getNavigationBadge(): ?string
     {
         return self::getModel()::count();

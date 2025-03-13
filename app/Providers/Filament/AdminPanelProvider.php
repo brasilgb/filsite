@@ -81,7 +81,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->renderHook(
                 // This line tells us where to render it
-                'panels::sidebar.footer',
+                'panels::main.footer',
                 // This is the view that will be rendered
                 fn () => view('filament.customFooter'),
             )->spa();

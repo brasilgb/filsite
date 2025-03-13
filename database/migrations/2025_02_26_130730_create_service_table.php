@@ -18,12 +18,7 @@ return new class extends Migration
             $table->text('summary')->nullable();
             $table->text('content')->nullable();
             $table->string('featured');
-            $table->integer('social');
             $table->integer('active');
-            $table->string('url')->nullable();
-            $table->integer('menu')->nullable();
-            $table->integer('type');
-            $table->integer('linked')->nullable();
             $table->timestamps();
         });
     }

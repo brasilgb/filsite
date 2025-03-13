@@ -8,6 +8,7 @@ use Filament\Forms\Form;
 use Filament\Forms\Components\TextInput;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Tabs;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Support\Exceptions\Halt;
 use Filament\Notifications\Notification;
@@ -41,13 +42,24 @@ class EditSetting extends Page
     {
         return $form
             ->schema([
-                Section::make()
-                    ->schema([
-                        TextInput::make('title')
-                            ->required(),
+                Tabs::make('Tabs')
+                    ->tabs([
+                        Tabs\Tab::make('Tab 1')
+                            
+                                    ->schema([
+                                        TextInput::make('title')
+                                            ->required(),
+                            ]),
+                        Tabs\Tab::make('Tab 2')
+                            ->schema([
+                                // ...
+                            ]),
+                        Tabs\Tab::make('Tab 3')
+                            ->schema([
+                                // ...
+                            ]),
                     ])
-            ])
-            ->statePath('data');
+            ])->statePath('data');
     }
 
     public function save(Setting $setting): void

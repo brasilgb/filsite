@@ -4,14 +4,22 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
+use App\Models\Category;
 use App\Models\Product;
 use Filament\Forms;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
+use Filament\Notifications\Notification;
+use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Leandrocfe\FilamentPtbrFormFields\Currencies\BRL;
+use Leandrocfe\FilamentPtbrFormFields\Money;
 
 class ProductResource extends Resource
 {
@@ -26,41 +34,59 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('brand')
-                    ->label('Fabricante')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('title')
-                    ->label('Nome')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('summary')
-                    ->label('Breve descrição')
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('content')
-                    ->label('Descrição completa')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('featured')
-                    ->label('Imagem destacada')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('active')
-                    ->label('Ativar produto')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('url')
-                    ->label('URL Externa')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('valnormal')
-                    ->numeric()
-                    ->default(null),
-                Forms\Components\TextInput::make('valpromo')
-                    ->numeric()
-                    ->default(null),
+                Section::make()
+                    ->schema([
+                        Grid::make()->schema([
+                            Forms\Components\Select::make('categories')
+                                ->label('Categorias')
+                                ->multiple()
+                                ->relationship('categories', 'name')
+                                ->searchable(),
+                            Forms\Components\TextInput::make('brand')
+                                ->label('Fabricante')
+                                ->maxLength(255)
+                                ->required()
+                                ->default(null)
+                        ])->columns(2),
+                        Grid::make()->schema([
+                            Forms\Components\TextInput::make('title')
+                                ->label('Produto')
+                                ->live()
+                                ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('slug')
+                                ->required()
+                                ->maxLength(255)
+                        ])->columns(2),
+
+                        Forms\Components\Textarea::make('summary')
+                            ->label('Breve descrição')
+                            ->required()
+                            ->columnSpanFull(),
+                        Forms\Components\RichEditor::make('content')
+                            ->label('Descrição completa')
+                            ->required()
+                            ->columnSpanFull(),
+                        Forms\Components\FileUpload::make('featured')
+                            ->label('Imagem destacada')
+                            ->image(),
+                        Forms\Components\Toggle::make('active')
+                            ->label('Ativar produto'),
+                        Forms\Components\TextInput::make('url')
+                            ->label('URL Externa')
+                            ->maxLength(255)
+                            ->placeholder('http://meulink.com.br/')
+                            ->default(null),
+                        Grid::make()->schema([
+                            Money::make('valnormal')
+                                ->currency(BRL::class)
+                                ->prefix('R$'),
+                            Money::make('valpromo')
+                                ->currency(BRL::class)
+                                ->prefix('R$'),
+                        ])->columns(2),
+                    ])
             ]);
     }
 
@@ -68,32 +94,47 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('featured')
+                Tables\Columns\ImageColumn::make('featured')
+                    ->label('Destaque')
+                    ->circular(),
+                Tables\Columns\TextColumn::make('title')
+                    ->label('Produto')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('brand')
+                    ->label('Fabricante')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('active')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('categories.name')
+                    ->label('Categorias'),
+                Tables\Columns\ToggleColumn::make('active')
+                    ->label('Ativo'),
                 Tables\Columns\TextColumn::make('valnormal')
+                    ->label('Valor')
+                    ->prefix('R$')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('valpromo')
+                    ->label('Promoção')
+                    ->prefix('R$')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label('cadastro')
+                    ->label('Cadastro')
                     ->dateTime("d/m/Y H:i")
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->successNotification(
+                        Notification::make()
+                            ->success()
+                            ->title('Produto deletado')
+                            ->body('O produto foi deletado com sucesso.')
+                    ),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
