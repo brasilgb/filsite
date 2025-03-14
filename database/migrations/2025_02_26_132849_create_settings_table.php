@@ -13,24 +13,29 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->string('logo')->nullable();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
-            $table->string('logo')->nullable();
+            $table->text('url')->nullable();
+            $table->text('opening')->nullable();
             $table->string('state')->nullable();
             $table->string('city')->nullable();
             $table->string('neighborhood')->nullable();
-            $table->string('address')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('street')->nullable();
+            $table->string('number')->nullable();
+            $table->string('complement')->nullable();
+            $table->text('maps')->nullable();
+            $table->string('telephone')->nullable();
+            $table->string('celular')->nullable();
+            $table->text('email')->nullable();
             $table->text('whatsapp')->nullable();
             $table->text('instagram')->nullable();
             $table->text('facebook')->nullable();
-            $table->text('email')->nullable();
-            $table->text('url')->nullable();
-            $table->text('opening')->nullable();
+            $table->text('redex')->nullable();
+
             $table->text('metatitle')->nullable();
             $table->text('metakeyword')->nullable();
             $table->text('metadescription')->nullable();
-            $table->text('maps')->nullable();
             $table->timestamps();
         });
     }

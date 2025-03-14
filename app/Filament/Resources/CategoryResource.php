@@ -39,11 +39,9 @@ class CategoryResource extends Resource
                                 ->label('Categoria')
                                 ->live()
                                 ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
-                                ->required()
-                                ->maxLength(255),
+                                ->rules(['required']),
                             Forms\Components\TextInput::make('slug')
-                                ->required()
-                                ->maxLength(255),
+                                ->rules(['required']),
                         ])->columns(3),
 
                         Forms\Components\RichEditor::make('description')
@@ -58,12 +56,12 @@ class CategoryResource extends Resource
                         ])->columns(2),
                         Grid::make()->schema([
                             Forms\Components\Toggle::make('active')
-                                ->required(),
+                                ->rules(['required']),
                             Forms\Components\Toggle::make('menu')
-                                ->required(),
+                                ->rules(['required']),
                             Forms\Components\Toggle::make('visiblehome')
                                 ->label('Página Inicial')
-                                ->required(),
+                                ->rules(['required']),
                         ])->columns(3),
                     ])
             ]);

@@ -11,7 +11,6 @@ use Filament\Navigation\MenuItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
-use Filament\Support\Colors\Color;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -26,7 +25,6 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->maxContentWidth('full')
-            
             ->default()
             ->id('admin')
             ->path('admin')
@@ -51,12 +49,12 @@ class AdminPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+                // Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                // Widgets\AccountWidget::class,
+                // Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -81,7 +79,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->renderHook(
                 // This line tells us where to render it
-                'panels::main.footer',
+                'panels::sidebar.footer',
                 // This is the view that will be rendered
                 fn () => view('filament.customFooter'),
             )->spa();

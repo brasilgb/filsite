@@ -43,20 +43,20 @@ class ServiceResource extends Resource
                                 ->label('Serviço')
                                 ->live()
                                 ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
-                                ->required()
+                                ->rules(['required'])
                                 ->maxLength(255),
                             Forms\Components\TextInput::make('slug')
-                                ->required()
+                                ->rules(['required'])
                                 ->maxLength(255)
                         ])->columns(3),
 
                         Forms\Components\Textarea::make('summary')
                             ->label('Breve descrição')
-                            ->required()
+                            ->rules(['required'])
                             ->columnSpanFull(),
                         Forms\Components\RichEditor::make('content')
                             ->label('Descrição completa')
-                            ->required()
+                            ->rules(['required'])
                             ->columnSpanFull(),
                         Forms\Components\FileUpload::make('featured')
                             ->label('Imagem destacada')
