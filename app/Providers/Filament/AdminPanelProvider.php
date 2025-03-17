@@ -41,7 +41,7 @@ class AdminPanelProvider extends PanelProvider
             ->theme(asset('css/filament/admin/theme.css'))
             ->font('Poppins', provider: GoogleFontProvider::class)
             ->darkMode(true)
-            ->brandName('Ok')
+            ->brandName('Meu Site')
             // ->brandLogo(asset('images/logo.png'))
             ->brandLogo(fn() => view('filament.admin.logo'))
             ->favicon(asset('images/logo.png'))
@@ -53,6 +53,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
+                
                 // Widgets\AccountWidget::class,
                 // Widgets\FilamentInfoWidget::class,
             ])
