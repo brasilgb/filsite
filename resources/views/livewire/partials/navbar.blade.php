@@ -11,6 +11,7 @@
             transition-all
             duration-200
             h-24
+            z-40
          "
     :class="{ 'h-24': !scrolledFromTop, 'h-14': scrolledFromTop }">
 
