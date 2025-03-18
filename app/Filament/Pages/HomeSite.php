@@ -9,7 +9,6 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Form;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Tabs;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Support\Exceptions\Halt;
@@ -27,7 +26,6 @@ class HomeSite extends Page
     protected static ?string $navigationGroup = "Páginas";
 
     protected static ?string $navigationLabel = 'Página Inicial';
-
 
     public function mount(): void
     {

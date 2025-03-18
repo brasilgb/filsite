@@ -10,7 +10,15 @@
     @livewireStyles
 </head>
 
-<body>
+<body
+      x-data="{navOpen: false, scrolledFromTop: false}"
+      x-init="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
+      @scroll.window="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
+      :class="{
+      'overflow-hidden': navOpen,
+      'overflow-scroll': !navOpen
+      }"
+   >
     <div class="min-h-screen flex flex-col">
         @livewire('partials.navbar')
         <main class="flex-grow">
