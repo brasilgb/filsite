@@ -46,11 +46,7 @@ class AboutCompany extends Page
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->label('Nome da Página')
-                            ->live()
-                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->placeholder('Sobre a Empresa')
-                            ->rules(['required']),
-                        Forms\Components\TextInput::make('slug')
                             ->rules(['required']),
                         Forms\Components\Textarea::make('summary')
                             ->label('Breve descrição ou Citação')

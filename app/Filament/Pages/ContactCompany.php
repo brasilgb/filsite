@@ -46,11 +46,7 @@ class ContactCompany extends Page
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->label('Título da Página')
-                            ->live()
-                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->placeholder('Entre em contato conosco')
-                            ->rules(['required']),
-                        Forms\Components\TextInput::make('slug')
                             ->rules(['required']),
                         Forms\Components\RichEditor::make('content')
                             ->label('Descrição Inicial')

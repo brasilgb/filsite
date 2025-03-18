@@ -103,6 +103,8 @@ class SettingCompany extends Page
                                     ->label('Facebook'),
                                 Forms\Components\TextInput::make('redex')
                                     ->label('Twiter(X)'),
+                                Forms\Components\TextInput::make('youtube')
+                                    ->label('Youtube'),
                             ]),
                         Tabs\Tab::make('CEO')
                             ->schema([

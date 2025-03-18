@@ -32,7 +32,7 @@ return new class extends Migration
             $table->text('instagram')->nullable();
             $table->text('facebook')->nullable();
             $table->text('redex')->nullable();
-
+            $table->text('youtube')->nullable();
             $table->text('metatitle')->nullable();
             $table->text('metakeyword')->nullable();
             $table->text('metadescription')->nullable();
