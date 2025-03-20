@@ -1,4 +1,4 @@
-    <section class="py-16 md:container m-auto grid md:grid-cols-3 gap-6">
+    <section class="py-16 md:px-0 px-4 md:container m-auto grid md:grid-cols-3 gap-6">
         @foreach ($services as $service)
             <div data-aos="fade-out" class=" bg-white border border-gray-200 rounded-lg shadow-sm">
                 <a href="#">

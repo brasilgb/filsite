@@ -1,5 +1,6 @@
 <section>
-    <div class="container m-auto py-16 grid grid-cols-4 gap-6">
+    
+    <div class="container m-auto py-16 grid md:grid-cols-5 grid-cols-2 gap-6 px-4">
         @foreach ($products as $product)
             <div data-aos="fade-out" class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm">
                 <a href="#">

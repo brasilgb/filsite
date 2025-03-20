@@ -8,3 +8,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomePage::class);
 Route::get('/sobre', AboutPage::class);
 Route::get('/contato', ContactPage::class);
+Route::get('/servicos', ContactPage::class);
+Route::get('/produtos', ContactPage::class);
