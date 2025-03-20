@@ -2,7 +2,9 @@
     class="
             fixed
             w-full
-            bg-linear-to-t from-[#2E3247] to-[#333958]
+            bg-linear-to-t from-[#162131] to-[#162131]
+            border-b
+            border-[#2d3d55]
             flex
             justify-between
             items-center
@@ -35,7 +37,7 @@
                       px-4
                       pt-8
                       space-y-4
-                      bg-linear-to-t from-[#2E3247] to-[#333958]
+                      bg-transparent
                       text-white
                       transform
                       transition

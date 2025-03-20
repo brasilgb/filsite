@@ -8,6 +8,7 @@
     <title>{{ $title ?? 'Site' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     @livewireStyles
 </head>
 
@@ -27,7 +28,7 @@
     @livewireScripts
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 1,
@@ -48,6 +49,7 @@
                 prevEl: ".swiper-button-prev",
             },
         });
+        AOS.init();
     </script>
 
 </body>

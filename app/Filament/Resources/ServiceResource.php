@@ -36,6 +36,7 @@ class ServiceResource extends Resource
                         Grid::make()->schema([
                             Forms\Components\Select::make('categories')
                                 ->label('Categorias')
+                                ->rules(['required'])
                                 ->multiple()
                                 ->relationship('categories', 'name')
                                 ->searchable(),
@@ -72,8 +73,7 @@ class ServiceResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('featured')
-                    ->label('Destaque')
-                    ->circular(),
+                    ->label('Destaque'),
                 Tables\Columns\TextColumn::make('title')
                     ->label('Serviço'),
                 Tables\Columns\TextColumn::make('categories.name')
@@ -98,6 +98,7 @@ class ServiceResource extends Resource
                             ->title('Serviço deletado')
                             ->body('O serviço foi deletado com sucesso.')
                     ),
+                    Tables\Actions\DetachAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

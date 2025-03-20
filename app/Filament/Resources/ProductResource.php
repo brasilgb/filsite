@@ -35,6 +35,7 @@ class ProductResource extends Resource
                         Grid::make()->schema([
                             Forms\Components\Select::make('categories')
                                 ->label('Categorias')
+                                ->rules(['required'])
                                 ->multiple()
                                 ->relationship('categories', 'name')
                                 ->searchable(),
@@ -67,8 +68,12 @@ class ProductResource extends Resource
                         Forms\Components\FileUpload::make('featured')
                             ->label('Imagem destacada')
                             ->image(),
-                        Forms\Components\Toggle::make('active')
+                        Grid::make()->schema([
+                            Forms\Components\Toggle::make('active')
                             ->label('Ativar produto'),
+                        Forms\Components\Toggle::make('home')
+                            ->label('Página inicial'),
+                        ])->columns(2),
                         Forms\Components\TextInput::make('url')
                             ->label('URL Externa')
                             ->maxLength(255)
@@ -91,8 +96,7 @@ class ProductResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('featured')
-                    ->label('Destaque')
-                    ->circular(),
+                    ->label('Destaque'),
                 Tables\Columns\TextColumn::make('title')
                     ->label('Produto')
                     ->searchable(),

@@ -35,6 +35,13 @@ class CategoryResource extends Resource
                             Forms\Components\Select::make('category_id')
                                 ->label('Categoria Pai')
                                 ->options(Category::all()->pluck('name', 'id')),
+                            Forms\Components\Select::make('type')
+                                ->options([
+                                    'product' => 'Produtos',
+                                    'service' => 'Serviços'
+                                ])
+                                ->label('Tipo')
+                                ->rules(['required']),
                             Forms\Components\TextInput::make('name')
                                 ->label('Categoria')
                                 ->live()
@@ -42,7 +49,7 @@ class CategoryResource extends Resource
                                 ->rules(['required']),
                             Forms\Components\TextInput::make('slug')
                                 ->rules(['required']),
-                        ])->columns(3),
+                        ])->columns(4),
 
                         Forms\Components\RichEditor::make('description')
                             ->label('Descrição')

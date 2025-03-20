@@ -18,9 +18,10 @@ return new class extends Migration
             $table->string('slug');
             $table->text('summary')->nullable();
             $table->text('content')->nullable();
-            $table->string('featured');
+            $table->string('featured')->nullable();
             $table->integer('active');
             $table->string('url')->nullable();
+            $table->string('home')->nullable();
             $table->decimal('valnormal', 6, 2)->nullable();
             $table->decimal('valpromo', 6, 2)->nullable();
             $table->timestamps();
