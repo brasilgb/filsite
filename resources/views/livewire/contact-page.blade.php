@@ -1,3 +1,5 @@
-<div>
-    <h1>Contatos da empresa</h1>
+<div class="mt-24">
+    <div>
+        <img src={{ asset('storage/' . $contact->featured) }} alt="">
+    </div>
 </div>

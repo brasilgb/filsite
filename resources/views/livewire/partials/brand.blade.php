@@ -1,4 +1,4 @@
-<section class="bg-gray-100 py-16">
+<section class="bg-slate-50 py-16">
     <div class="container m-auto flex flex-wrap items-center justify-center  gap-6">
         @foreach ($brands as $brand)
             <div class="max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow-sm">
