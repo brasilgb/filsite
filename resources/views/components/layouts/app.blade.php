@@ -18,7 +18,7 @@
         'overflow-hidden': navOpen,
         'overflow-scroll': !navOpen
     }">
-    <div class="min-h-screen flex flex-col">
+    <div class="min-h-screen flex flex-col antialiased font-roboto">
         @livewire('partials.navbar')
         <main class="flex-grow">
             {{ $slot }}
