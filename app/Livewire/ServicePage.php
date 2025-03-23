@@ -19,8 +19,8 @@ class ServicePage extends Component
     public function render()
     {
         $categories = Category::with('services')->where('type', 'service')->get();
-        $services = Category::with('services')->where('type', 'service')->orderBy('id', 'DESC')->get();
         $active2 = Category::with('services')->where('type', 'service')->where('category_id', '<>', null)->orderBy('id', 'ASC')->first();
+        $services = Category::with('services')->where('type', 'service')->where('id', $active2->id)->get();
         return view('livewire.service-page', ['categories' => $categories, 'services' => $services, 'active2' => $active2 ? $active2->id : []]);
     }
 }

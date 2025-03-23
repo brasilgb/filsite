@@ -5,8 +5,13 @@
                 <img src={{ asset('storage/' . $about->featured) }} alt="">
             </div>
         </header>
-        <div>
-
+        <div class="container m-auto">
+            <div>
+                {{ $about->title }}
+            </div>
+            <div>
+                {!! $about->content !!}
+            </div>
         </div>
     @endif
 
