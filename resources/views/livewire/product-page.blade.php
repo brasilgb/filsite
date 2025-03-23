@@ -1,27 +1,29 @@
 <div class="">
-    <header class="pt-24 bg-[#162131]">
-        @foreach ($categories as $category)
-            @if (is_null($category->category_id))
-                <div>
-                    <img src={{ asset('storage/' . $category->featured) }} alt="">
-                </div>
-            @endif
-        @endforeach
-    </header>
+    @if (count($categories) > 0)
+        <header class="pt-24 bg-[#162131]">
+            @foreach ($categories as $category)
+                @if (is_null($category->category_id))
+                    <div>
+                        <img src={{ asset('storage/' . $category->featured) }} alt="">
+                    </div>
+                @endif
+            @endforeach
+        </header>
 
-    <div class="bg-[#162131] py-4">
-        <div class="container m-auto flex items-center md:justify-start justify-center bg-[#253650] rounded-md p-2">
+        <div class="bg-[#162131] py-4">
+            <div class="container m-auto flex items-center md:justify-start justify-center bg-[#253650] rounded-md p-2">
 
-            <select wire:model.live="catSelected" class="bg-white px-4 py-2 rounded-md">
-                @foreach ($categories as $category)
-                    @if (!is_null($category->category_id))
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endif
-                @endforeach
-            </select>
+                <select wire:model.live="catSelected" class="bg-white px-4 py-2 rounded-md">
+                    @foreach ($categories as $category)
+                        @if (!is_null($category->category_id))
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endif
+                    @endforeach
+                </select>
 
+            </div>
         </div>
-    </div>
+    @endif
     {{-- <div>catSelected: @json($allproducts)</div> --}}
     <div class="container m-auto grid md:grid-cols-5 gap-4 py-10 md:px-0 px-2">
         @if (count($allproducts) > 0)
@@ -38,10 +40,10 @@
                                 </h5>
                                 <div class="flex items-center mt-2.5 mb-5">
                                     <del
-                                        class="bg-gray-100 text-[#CA0156] text-xs font-semibold px-2.5 py-0.5 rounded-sm ms-3">R$
+                                        class="text-[#CA0156] text-xs font-semibold px-1.5 py-0.5 rounded-sm ms-3">R$
                                         {{ $srv->valnormal }}</del>
                                     <span
-                                        class="bg-blue-100 text-blue-800 text-lg font-semibold px-2.5 py-0.5 rounded-full ms-3">R$
+                                        class="text-blue-800 text-lg font-semibold px-1.5 py-0.5 rounded-full ms-3">R$
                                         {{ $srv->valpromo }}</span>
                                 </div>
                                 <div class="flex items-center justify-between">
@@ -68,16 +70,16 @@
                             class="w-full md:max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm">
                             <img class="p-4 rounded-t-lg" src={{ asset('storage/' . $srv->featured) }}
                                 alt="srv image" />
-                            <div class="px-5 pb-5">
+                            <div class="px-3 pb-5">
                                 <p class="text-sm text-gray-500">{{ $srv->brand }}</p>
                                 <h5 class="text-xl font-semibold tracking-tight text-gray-900">{{ $srv->title }}
                                 </h5>
                                 <div class="flex items-center mt-2.5 mb-5">
                                     <del
-                                        class="bg-gray-100 text-[#CA0156] text-xs font-semibold px-2.5 py-0.5 rounded-sm ms-3">R$
+                                        class="text-[#CA0156] text-xs font-semibold px-1.5 py-0.5 rounded-sm ms-3">R$
                                         {{ $srv->valnormal }}</del>
                                     <span
-                                        class="bg-blue-100 text-blue-800 text-lg font-semibold px-2.5 py-0.5 rounded-full ms-3">R$
+                                        class="text-blue-800 text-lg font-semibold px-1.5 py-0.5 rounded-full ms-3">R$
                                         {{ $srv->valpromo }}</span>
                                 </div>
                                 <div class="flex items-center justify-between">

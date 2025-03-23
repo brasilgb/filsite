@@ -18,7 +18,7 @@
     :class="{ 'h-24': !scrolledFromTop, 'h-14': scrolledFromTop }">
 
     <a href="/" wire:navigate>
-        <img src="{{ asset('images/logo.png') }}" alt="ChitChat Logo"
+        <img src="{{ asset('storage/'.$settings->logo) }}" alt="ChitChat Logo"
             class="h-12 transform origin-left transition duration-200"
             :class="{ 'scale-100': !scrolledFromTop, 'scale-75': scrolledFromTop }" />
     </a>
@@ -48,26 +48,32 @@
             :class="{ 'translate-x-full': !navOpen }" :class="{ 'translate-x-0': navOpen }">
             <li class="">
                 <a href="/" wire:navigate class="md:text-slate-50 text-slate-50 px-3 py-1.5"
-                    wire:current.exact="md:bg-[#CA0156] md:border md:border-[#eb0766] md:text-white md:shadow-md drop-shadow-md rounded-md" @click="navOpen = false">Home</a>
+                    wire:current.exact="md:bg-[#CA0156] md:border md:border-[#eb0766] md:text-white md:shadow-md drop-shadow-md rounded-md"
+                    @click="navOpen = false">Home</a>
             </li>
             <li class="">
                 <a href="/servicos" wire:navigate class="md:text-slate-50 text-slate-50 px-3 py-1.5"
-                    wire:current="md:bg-[#CA0156] md:border md:border-[#eb0766] md:text-white md:shadow-md drop-shadow-md rounded-md" @click="navOpen = false">Serviços</a>
+                    wire:current="md:bg-[#CA0156] md:border md:border-[#eb0766] md:text-white md:shadow-md drop-shadow-md rounded-md"
+                    @click="navOpen = false">Serviços</a>
             </li>
             <li>
                 <a href="/produtos" wire:navigate class="md:text-slate-50 text-slate-50 px-3 py-1.5"
-                    wire:current="md:bg-[#CA0156] md:border md:border-[#eb0766] md:text-white md:shadow-md drop-shadow-md rounded-md" @click="navOpen = false">Produtos</a>
+                    wire:current="md:bg-[#CA0156] md:border md:border-[#eb0766] md:text-white md:shadow-md drop-shadow-md rounded-md"
+                    @click="navOpen = false">Produtos</a>
             </li>
             <li>
                 <a href="/sobre" wire:navigate class="md:text-slate-50 text-slate-50 px-3 py-1.5"
-                    wire:current="md:bg-[#CA0156] md:border md:border-[#eb0766] md:text-white md:shadow-md drop-shadow-md rounded-md" @click="navOpen = false">Sobre</a>
+                    wire:current="md:bg-[#CA0156] md:border md:border-[#eb0766] md:text-white md:shadow-md drop-shadow-md rounded-md"
+                    @click="navOpen = false">Sobre</a>
             </li>
             <li>
                 <a href="/contato" wire:navigate class="md:text-slate-50 text-slate-50 px-3 py-1.5"
-                    wire:current="md:bg-[#CA0156] md:border md:border-[#eb0766] md:text-white md:shadow-md drop-shadow-md rounded-md" @click="navOpen = false">Contato</a>
+                    wire:current="md:bg-[#CA0156] md:border md:border-[#eb0766] md:text-white md:shadow-md drop-shadow-md rounded-md"
+                    @click="navOpen = false">Contato</a>
             </li>
             <li class="md:pl-10">
-                <a href="/admin" class="text-slate-50 md:text-white md:border md:border-[#008cff] md:bg-[#007AFF] md:shadow-md rounded-md px-3 py-1.5">
+                <a href="/admin"
+                    class="text-slate-50 md:text-white md:border md:border-[#008cff] md:bg-[#007AFF] md:shadow-md rounded-md px-3 py-1.5">
                     @auth
                         Painel de controle
                         @elseguest

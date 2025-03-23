@@ -64,12 +64,10 @@ class CategoryResource extends Resource
                         Grid::make()->schema([
                             Forms\Components\Toggle::make('active')
                                 ->rules(['required']),
-                            Forms\Components\Toggle::make('menu')
-                                ->rules(['required']),
                             Forms\Components\Toggle::make('visiblehome')
                                 ->label('Página Inicial')
                                 ->rules(['required']),
-                        ])->columns(3),
+                        ])->columns(2),
                     ])
             ]);
     }

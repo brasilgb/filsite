@@ -19,9 +19,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('thumbnail')->nullable();
             $table->string('featured')->nullable();
-            $table->integer('type')->nullable();
+            $table->string('type')->nullable();
             $table->integer('active');
-            $table->integer('menu');
             $table->integer('visiblehome');
             $table->timestamps();
         });
