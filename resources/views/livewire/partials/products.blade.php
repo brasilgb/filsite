@@ -18,19 +18,17 @@
                                 </h5>
                             </a>
                             <div class="flex items-center mt-2.5 mb-5">
-                                <del
-                                    class="text-[#CA0156] text-xs font-semibold px-1.5 py-0.5 rounded-sm ms-3">R$
+                                <del class="text-[#CA0156] text-xs font-semibold px-1.5 py-0.5 rounded-sm ms-3">R$
                                     {{ $product->valnormal }}</del>
-                                <span
-                                    class="text-blue-800 text-lg font-semibold px-1.5 py-0.5 rounded-full ms-3">R$
+                                <span class="text-blue-800 text-lg font-semibold px-1.5 py-0.5 rounded-full ms-3">R$
                                     {{ $product->valpromo }}</span>
                             </div>
                             <div class="flex items-center justify-between">
-                                <a href="#"
+                                <a href="/produtos/detalhes/{{ $product->slug }}"
                                     class="text-white bg-[#CA0156] hover:bg-[#ca0155e3] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                     Detalhes
                                 </a>
-                                <a href="#"
+                                <a href="https://api.whatsapp.com/send?phone=5551995179173&text=Gostaria de mais informações sobre {{ $product->title }}"
                                     class="text-white bg-transparent focus:ring-0 focus:outline-none p-2.5 text-center">
                                     <img class="w-auto h-8" src={{ asset('images/msocial/whatsapp.svg') }}
                                         alt="">

@@ -21,6 +21,7 @@ class ServicePage extends Component
         $categories = Category::with('services')->where('type', 'service')->get();
         $active2 = Category::with('services')->where('type', 'service')->where('category_id', '<>', null)->orderBy('id', 'ASC')->first();
         $services = Category::with('services')->where('type', 'service')->where('id', $active2->id)->get();
-        return view('livewire.service-page', ['categories' => $categories, 'services' => $services, 'active2' => $active2 ? $active2->id : []]);
+        $categoryActive = Category::where('id', $this->active ? $this->active : $active2->id)->first();
+        return view('livewire.service-page', ['categories' => $categories, 'services' => $services, 'active2' => $active2 ? $active2->id : [], 'categoryActive' => $categoryActive]);
     }
 }

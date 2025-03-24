@@ -2,17 +2,20 @@
     @if ($about)
         <header class="">
             <div>
-                <img src={{ asset('storage/' . $about->featured) }} alt="">
+                <img class="object-cover h-auto w-full" src={{ asset('storage/' . $about->featured) }} alt="">
             </div>
         </header>
-        <div class="container m-auto">
-            <div>
+        <section class="container m-auto py-16">
+            <div class=" text-3xl font-light text-[#162131]">
                 {{ $about->title }}
+            </div>
+            <div class="text-sm text-slate-400 pb-6">
+                {{ $about->summary }}
             </div>
             <div>
                 {!! $about->content !!}
             </div>
-        </div>
+        </section>
     @endif
 
 </div>

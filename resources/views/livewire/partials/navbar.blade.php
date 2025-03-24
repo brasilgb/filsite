@@ -18,9 +18,14 @@
     :class="{ 'h-24': !scrolledFromTop, 'h-14': scrolledFromTop }">
 
     <a href="/" wire:navigate>
-        <img src="{{ asset('storage/'.$settings->logo) }}" alt="ChitChat Logo"
-            class="h-12 transform origin-left transition duration-200"
-            :class="{ 'scale-100': !scrolledFromTop, 'scale-75': scrolledFromTop }" />
+        @if (!empty($settings->logo))
+            <img src="{{ asset('storage/' . $settings->logo) }}" alt="ChitChat Logo"
+                class="h-12 transform origin-left transition duration-200"
+                :class="{ 'scale-100': !scrolledFromTop, 'scale-75': scrolledFromTop }" />
+        @else
+            <span>Logo</span>
+        @endif
+
     </a>
     <nav>
         <button class="md:hidden" @click="navOpen = !navOpen">

@@ -8,20 +8,34 @@
             @endif
         @endforeach
     </header>
-    @if (count($categories) > 0)
-        <div class="bg-[#162131] py-2">
-            <div
-                class="container m-auto overflow-auto flex items-center md:justify-start justify-between md:gap-6 bg-[#253650] rounded-md p-1">
-                @foreach ($categories as $category)
-                    @if (!is_null($category->category_id))
-                        <button type="button" wire:click="servicesall({{ $category->id }})"
-                            class="px-6 py-2 rounded-md cursor-pointer drop-shadow-md {{ ($active ? $category->id === $active : $category->id === $active2) ? 'bg-[#CA0156] border border-[#eb0766] text-white shadow-md' : 'bg-transparent text-white' }}">
-                            {{ $category->name }}
-                        </button>
-                    @endif
-                @endforeach
-            </div>
+
+    <div class="bg-[#162131] py-2">
+        <div
+            class="container m-auto overflow-auto flex items-center md:justify-start justify-between md:gap-6 bg-[#253650] rounded-md p-1">
+            @foreach ($categories as $category)
+                @if (!is_null($category->category_id))
+                    <button type="button" wire:click="servicesall({{ $category->id }})"
+                        class="px-6 py-2 rounded-md cursor-pointer drop-shadow-md {{ ($active ? $category->id === $active : $category->id === $active2) ? 'bg-[#CA0156] border border-[#eb0766] text-white shadow-md' : 'bg-transparent text-white' }}">
+                        {{ $category->name }}
+                    </button>
+                @endif
+            @endforeach
         </div>
+    </div>
+
+    @if (count($categories) > 0)
+        @foreach ($categories as $category)
+            @if (is_null($category->category_id))
+                <section class="container m-auto py-2">
+                    <div class=" text-3xl font-light text-[#162131]">
+                        {{ $category->name }}<span class="text-base"> / </span>{{ $categoryActive->name }}
+                    </div>
+                    <div class="text-sm text-slate-400 pb-6">
+                        {!! $category->description !!}
+                    </div>
+                </section>
+            @endif
+        @endforeach
     @endif
 
     <div class="container m-auto grid md:grid-cols-4 gap-4 py-10 md:px-0 px-2">
