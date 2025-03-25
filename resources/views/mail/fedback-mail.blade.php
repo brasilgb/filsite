@@ -5,7 +5,7 @@
 
 ## Email: {{ $contactData['email'] }}
 
-## Mensagem: {{ $contactData['mensagem'] }}
+## Mensagem: {{ $contactData['message'] }}
 
 Thanks,<br>
 {{ config('app.name') }}

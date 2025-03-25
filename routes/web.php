@@ -11,6 +11,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomePage::class);
 Route::get('/sobre', AboutPage::class);
 Route::get('/contato', ContactPage::class);
-Route::get('/servicos', ServicePage::class);
+Route::get('/servicos/{id?}', ServicePage::class);
 Route::get('/produtos', ProductPage::class);
 Route::get('/produtos/detalhes/{slug}', ItemPage::class);

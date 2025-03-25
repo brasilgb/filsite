@@ -144,9 +144,22 @@ class SettingCompany extends Page
         //     ->send();
     }
 
+    public function getDataOrder() {
+        dd('feito');
+    }
+
     protected function getFormActions(): array
     {
         return [
+            Action::make('Gravar Ordens no Site')
+                ->icon('heroicon-m-pencil-square')
+                ->button()
+                ->labeledFrom('md'),
+            Action::make('Gravar Usuários no Site')
+                ->icon('heroicon-m-pencil-square')
+                ->button()
+                ->action(fn () => $this->getDataOrder())
+                ->labeledFrom('md'),
             Action::make('save')
                 ->label(__('filament-panels::resources/pages/edit-record.form.actions.save.label'))
                 ->submit('save'),

@@ -15,7 +15,9 @@
             @foreach ($categories as $category)
                 @if (!is_null($category->category_id))
                     <button type="button" wire:click="servicesall({{ $category->id }})"
-                        class="px-6 py-2 rounded-md cursor-pointer drop-shadow-md {{ ($active ? $category->id === $active : $category->id === $active2) ? 'bg-[#CA0156] border border-[#eb0766] text-white shadow-md' : 'bg-transparent text-white' }}">
+                        class="px-6 py-2 rounded-md cursor-pointer drop-shadow-md {{ $category->id == $active || $category->id == $active2 || $category->id == $active3
+                            ? 'bg-[#CA0156] border border-[#eb0766] text-white shadow-md'
+                            : 'bg-transparent text-white' }}">
                         {{ $category->name }}
                     </button>
                 @endif

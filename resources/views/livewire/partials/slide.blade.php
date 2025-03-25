@@ -4,7 +4,7 @@
         <div class="swiper-wrapper">
             @foreach ($sliders as $slider)
             <div class="swiper-slide">
-                <a href={{ $slider->link }} target="_blank" rel="noopener noreferrer">
+                <a href={{ $slider->link ? $slider->link : '/' }} target="_blank" rel="noopener noreferrer">
                     <img src={{ asset('storage/'. $slider->image) }} alt="" />
                 </a>
             </div>

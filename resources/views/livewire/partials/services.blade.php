@@ -7,17 +7,12 @@
                 <div class="grid md:grid-cols-3 gap-6">
                     @foreach ($services as $service)
                         <div data-aos="fade-out" class=" bg-white border border-gray-200 rounded-lg shadow-sm">
-                            <a href="#">
-                                <img class="rounded-t-lg" src={{ asset('storage/' . $service->featured) }}
-                                    alt="" />
-                            </a>
+                            <img class="rounded-t-lg" src={{ asset('storage/' . $service->featured) }} alt="" />
                             <div class="p-5">
-                                <a href="#">
-                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                                        {{ $service->name }}</h5>
-                                </a>
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                                    {{ $service->name }}</h5>
                                 <p class="mb-3 font-normal text-gray-700">{!! $service->description !!}</p>
-                                <a href="{{ $service->slug }}"
+                                <a href="/servicos/{{ $service->id }}" wire:navigate
                                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white  bg-[#CA0156] hover:bg-[#ca0155e3] rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300">
                                     Detalhes
                                     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class ServicePage extends Component
@@ -16,12 +17,13 @@ class ServicePage extends Component
         $this->allservices = Category::with('services')->where('id', $id)->get();
     }
 
-    public function render()
+    public function render(Request $request)
     {
         $categories = Category::with('services')->where('type', 'service')->get();
         $active2 = Category::with('services')->where('type', 'service')->where('category_id', '<>', null)->orderBy('id', 'ASC')->first();
-        $services = Category::with('services')->where('type', 'service')->where('id', $active2->id)->get();
-        $categoryActive = Category::where('id', $this->active ? $this->active : $active2->id)->first();
-        return view('livewire.service-page', ['categories' => $categories, 'services' => $services, 'active2' => $active2 ? $active2->id : [], 'categoryActive' => $categoryActive]);
+        $reqId = $request->id ? $request->id : $active2->id;
+        $services = Category::with('services')->where('type', 'service')->where('id', $reqId)->get();
+        $categoryActive = Category::where('id', $this->active ? $this->active : $reqId)->first();
+        return view('livewire.service-page', ['categories' => $categories, 'services' => $services, 'active2' => !$request->id && !$this->active ? $active2->id : [], 'categoryActive' => $categoryActive, 'active3' => $request->id ? $request->id : null]);
     }
 }
