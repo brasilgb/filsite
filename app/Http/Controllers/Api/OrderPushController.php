@@ -11,6 +11,36 @@ use Illuminate\Support\Facades\Queue;
 
 class OrderPushController extends Controller
 {
+    public function getStatus($status)
+    {
+switch ($status) {
+            case 1:
+                return 'Ordem Aberta';
+                break;
+            case 2:
+                return 'Ordem Fechada';
+                break;
+            case 3:
+                return 'Orçamento Gerado';
+                break;
+            case 4:
+                return 'Orçamento Aprovado';
+                break;
+            case 5:
+                return 'ExecutandoReparo';
+                break;
+            case 6:
+                return '(CA)Serviço Concluído';
+                break;
+            case 7:
+                return '(CN)Serviço Concluído';
+                break;
+            case 8:
+                return 'Entregue ao Cliente';
+                break;
+        };
+    }
+
     public function InsertOrder(Request $request)
     {
         $data = $request->orders;
@@ -32,7 +62,7 @@ class OrderPushController extends Controller
                         "valueparts" => $ordem['valpecas'] ? $ordem['valpecas'] : 0,
                         "dtentry" => $ordem['dtentrada'],
                         "dtdelivery" => $ordem['dtentrega'] ? $ordem['dtentrega'] : null,
-                        "status" => $ordem['status']
+                        "status" => $this->getStatus($ordem['status'])
                     ]
                 );
             }

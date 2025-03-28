@@ -19,26 +19,22 @@ class UserPushController extends Controller
             DB::connection()->disableQueryLog();
             User::unguard();
             foreach (array_chunk($dados, 500) as $lote) {
-                // $registros = [];
                 foreach ($lote as $item) {
-                    User::find($item['id']);
-
+                    $userExist = User::where('client_id', $item['id'])->first();
                     User::updateOrInsert(
                         [
-                            'cpf' => $item['cpf']
+                            'client_id' => $item['id']
                         ],
                         [
-                            'client_id' => $item['id'],
+                            'cpf' => $item['cpf'],
                             'name' => $item['nome'],
                             'email' => $item['email'],
                             "active" => 1,
                             "is_admin" => 0,
-                            'password' => '$2y$12$HqyXsOdGpM0I9L0KxMRCKu0LFe5PLfDuVvuvgDmAoyeMcL1GRsRom'
+                            'password' => $userExist ? $userExist->password : '$2y$12$HqyXsOdGpM0I9L0KxMRCKu0LFe5PLfDuVvuvgDmAoyeMcL1GRsRom'
                         ]
                     );
                 }
-                // return response()->json($registros);
-                // DB::table('users')->insert($registros);
             }
             User::reguard();
             DB::connection()->enableQueryLog();

@@ -2,16 +2,16 @@
 
 namespace App\Providers\Filament;
 
+use App\Http\Middleware\AddUserMenuItems;
+use App\Models\Setting;
 use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\MenuItem;
-use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
-use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -40,9 +40,9 @@ class AdminPanelProvider extends PanelProvider
             ->theme(asset('css/filament/admin/theme.css'))
             ->font('Poppins', provider: GoogleFontProvider::class)
             ->darkMode(true)
-            ->brandName('Meu Site')
+            // ->brandName(Setting::first()->title)
             // ->brandLogo(asset('images/logo.png'))
-            ->brandLogo(fn() => view('filament.admin.logo'))
+            ->brandLogo(fn() => view('filament.admin.logo', ['settings' => Setting::first()]))
             ->favicon(asset('images/logo.png'))
             ->brandLogoHeight('3rem')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
@@ -66,6 +66,7 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                AddUserMenuItems::class,
             ])
             ->authMiddleware([
                 Authenticate::class,

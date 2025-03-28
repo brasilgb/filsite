@@ -1,11 +1,12 @@
 <div class="flex items-center justify-start gap-2">
-
-    <div >
-        <img src="{{asset('images/logo.png')}}" width="50" />
+    <div>
+        <a href="/" class="p-0 m-0">
+            <img src="{{ asset('storage/' . $settings->logo) }}" width="50" />
+        </a>
     </div>
-
     <div class="pt-1 text-2xl font-bold dark:text-white">
-        {{ config('app.name') }}
+        <a href="/" class="p-0 m-0">
+            {{ $settings->title }}
+        </a>
     </div>
-
 </div>

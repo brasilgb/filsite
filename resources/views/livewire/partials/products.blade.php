@@ -4,7 +4,7 @@
             <div class="pb-6 text-3xl font-light text-[#162131]">
                 Produtos
             </div>
-            <div class="grid md:grid-cols-5 grid-cols-2 gap-6 px-4 md:px-0">
+            <div class="grid md:grid-cols-5 md:gap-6 gap-2 px-2 md:px-0">
                 @foreach ($products as $product)
                     <div data-aos="fade-out" class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm">
                         <a href="#">

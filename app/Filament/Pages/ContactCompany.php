@@ -38,6 +38,7 @@ class ContactCompany extends Page
             $this->form->fill($contactData->toArray());
         }
     }
+    
     public function form(Form $form): Form
     {
         return $form
