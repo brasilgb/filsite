@@ -45,9 +45,7 @@
                             class="h-12 transform origin-left transition duration-200" />
                     </a>
                 @endif
-                <div class="text-lg text-gray-500 flex items-center justify-center gap-7 text-center mt-8">
-                    {{ $settings->city }} - {{ $settings->street }}- {{ $settings->neighborhood }} - {{ $settings->number }}
-                </div>
+                
                 <ul class="text-lg flex items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-10 mb-10 border-b border-gray-500">
                     <li><a href="#" class="text-gray-500 hover:text-gray-300">Home</a></li>
                     <li><a href="#" class="text-gray-500 hover:text-gray-300">Serviços</a></li>

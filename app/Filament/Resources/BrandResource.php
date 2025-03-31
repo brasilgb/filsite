@@ -56,13 +56,7 @@ class BrandResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make()
-                    ->successNotification(
-                        Notification::make()
-                            ->success()
-                            ->title('Fabricante inserido')
-                            ->body('O fabricante foi inserido com sucesso.')
-                    ),
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make()
                     ->successNotification(
                         Notification::make()
@@ -91,7 +85,7 @@ class BrandResource extends Resource
             'index' => Pages\ManageBrands::route('/'),
         ];
     }
-    
+
     public static function getNavigationBadge(): ?string
     {
         return self::getModel()::count();

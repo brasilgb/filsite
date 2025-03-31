@@ -34,7 +34,7 @@
               </svg>
             </div>
           </a>
-          
+
     </div>
     @livewireScripts
     <!-- Swiper JS -->
