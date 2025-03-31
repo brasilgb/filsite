@@ -60,7 +60,7 @@ switch ($status) {
                         "cost" => $ordem['custo'] ? $ordem['custo'] : 0,
                         "valueservice" => $ordem['valservico'] ? $ordem['valservico'] : 0,
                         "valueparts" => $ordem['valpecas'] ? $ordem['valpecas'] : 0,
-                        "dtentry" => $ordem['dtentrada'],
+                        "dtentry" => $ordem['created_at'],
                         "dtdelivery" => $ordem['dtentrega'] ? $ordem['dtentrega'] : null,
                         "status" => $this->getStatus($ordem['status'])
                     ]

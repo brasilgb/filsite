@@ -14,16 +14,16 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->unique()->index();
             $table->string('client_id')->nullable();
-            $table->string('details')->nullable();
-            $table->string('defect')->nullable();
-            $table->string('descbudget')->nullable();
-            $table->decimal('valuebudget', 10, 2)->default(0);
-            $table->decimal('cost', 10, 2)->default(0);
-            $table->decimal('valueservice', 10, 2)->default(0);
-            $table->decimal('valueparts', 10, 2)->default(0);
+            $table->text('details')->nullable();
+            $table->text('defect')->nullable();
+            $table->text('descbudget')->nullable();
+            $table->string('valuebudget')->default(0);
+            $table->string('cost')->default(0);
+            $table->string('valueservice')->default(0);
+            $table->string('valueparts')->default(0);
             $table->string('status')->nullable();
-            $table->dateTime('dtentry')->nullable();
-            $table->dateTime('dtdelivery')->nullable();
+            $table->string('dtentry')->nullable();
+            $table->string('dtdelivery')->nullable();
             $table->timestamps();
         });
     }
