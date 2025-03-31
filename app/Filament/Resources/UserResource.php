@@ -86,7 +86,7 @@ class UserResource extends Resource
                     ->successNotification(
                         Notification::make()
                             ->success()
-                            ->title('Produto deletado')
+                            ->title('Usuário deletado')
                             ->body('O produto foi deletado com sucesso.')
                     ),
             ])

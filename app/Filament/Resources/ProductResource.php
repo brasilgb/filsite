@@ -70,9 +70,9 @@ class ProductResource extends Resource
                             ->image(),
                         Grid::make()->schema([
                             Forms\Components\Toggle::make('active')
-                            ->label('Ativar produto'),
-                        Forms\Components\Toggle::make('home')
-                            ->label('Página inicial'),
+                                ->label('Ativar produto'),
+                            Forms\Components\Toggle::make('home')
+                                ->label('Página inicial'),
                         ])->columns(2),
                         Forms\Components\TextInput::make('url')
                             ->label('URL Externa')
