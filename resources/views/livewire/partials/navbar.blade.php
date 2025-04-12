@@ -76,7 +76,7 @@
                       transition
                       duration-300
                       translate-x-full
-                      md:relative md:flex md:space-x-10 md:min-h-0 md:px-0 md:py-0 md:space-y-0 md:translate-x-0
+                      md:relative md:flex md:space-x-4 md:min-h-0 md:px-0 md:py-0 md:space-y-0 md:translate-x-0
                    "
                 :class="{ 'translate-x-full': !navOpen }" :class="{ 'translate-x-0': navOpen }">
                 <li class="">
