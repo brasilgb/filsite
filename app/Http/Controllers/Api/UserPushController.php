@@ -29,7 +29,7 @@ class UserPushController extends Controller
                             'cpf' => $item['cpf'],
                             'name' => $item['nome'],
                             'email' => $item['email'],
-                            "active" => 1,
+                            "is_active" => 1,
                             "is_admin" => 0,
                             'password' => $userExist ? $userExist->password : '$2y$12$HqyXsOdGpM0I9L0KxMRCKu0LFe5PLfDuVvuvgDmAoyeMcL1GRsRom'
                         ]
