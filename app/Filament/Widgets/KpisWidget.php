@@ -2,6 +2,9 @@
 
 namespace App\Filament\Widgets;
 
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\Service;
 use App\Models\User;
 use Filament\Support\Enums\IconPosition;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
@@ -13,25 +16,21 @@ class KpisWidget extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('New Users', User::count())
-            ->description('New users that ')
+            Stat::make('Usuários', User::count())
+            ->description('Usuários e clientes')
             ->descriptionIcon('heroicon-o-users', IconPosition::Before)
-            ->chart([7, 2, 10, 3, 15, 4, 17])
             ->color('success'),
-            Stat::make('New Users', User::count())
-            ->description('New users that ')
-            ->descriptionIcon('heroicon-o-users', IconPosition::Before)
-            ->chart([7, 2, 10, 3, 15, 4, 17])
+            Stat::make('Categorias', Category::count())
+            ->description('Categorias produtos e serviços')
+            ->descriptionIcon('heroicon-o-tag', IconPosition::Before)
             ->color('danger'),
-            Stat::make('New Users', User::count())
-            ->description('New users that ')
-            ->descriptionIcon('heroicon-o-users', IconPosition::Before)
-            ->chart([7, 2, 10, 3, 15, 4, 17])
+            Stat::make('Serviços', Service::count())
+            ->description('Nossos serviços')
+            ->descriptionIcon('heroicon-o-wrench-screwdriver', IconPosition::Before)
             ->color('info'),
-            Stat::make('New Users', User::count())
-            ->description('New users that ')
-            ->descriptionIcon('heroicon-o-users', IconPosition::Before)
-            ->chart([7, 2, 10, 3, 15, 4, 17])
+            Stat::make('Produtos', Product::count())
+            ->description('Nossos produtos')
+            ->descriptionIcon('heroicon-o-device-phone-mobile', IconPosition::Before)
             ->color('warning'),
         ];
     }

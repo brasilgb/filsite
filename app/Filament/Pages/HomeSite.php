@@ -26,6 +26,8 @@ class HomeSite extends Page
     protected static ?string $navigationGroup = "Páginas";
 
     protected static ?string $navigationLabel = 'Página Inicial';
+    protected static ?string $navigationD = 'Página Inicial';
+    protected static bool $shouldRegisterNavigation = false;
 
     public function mount(): void
     {

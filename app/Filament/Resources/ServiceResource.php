@@ -60,6 +60,9 @@ class ServiceResource extends Resource
                             ->rules(['required'])
                             ->columnSpanFull(),
                         Forms\Components\FileUpload::make('featured')
+                            ->disk('public')
+                            ->directory('service')
+                            ->visibility('public')
                             ->label('Imagem destacada')
                             ->image(),
                         Forms\Components\Toggle::make('active')
@@ -98,7 +101,7 @@ class ServiceResource extends Resource
                             ->title('Serviço deletado')
                             ->body('O serviço foi deletado com sucesso.')
                     ),
-                    Tables\Actions\DetachAction::make()
+                Tables\Actions\DetachAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

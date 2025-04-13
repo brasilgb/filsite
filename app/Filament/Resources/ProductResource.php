@@ -66,6 +66,9 @@ class ProductResource extends Resource
                             ->rules(['required'])
                             ->columnSpanFull(),
                         Forms\Components\FileUpload::make('featured')
+                            ->disk('public')
+                            ->directory('product')
+                            ->visibility('public')
                             ->label('Imagem destacada')
                             ->image(),
                         Grid::make()->schema([

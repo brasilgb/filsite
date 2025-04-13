@@ -46,6 +46,9 @@ class SettingCompany extends Page
                         Tabs\Tab::make('Dados da empresa')
                             ->schema([
                                 Forms\Components\FileUpload::make('logo')
+                                ->disk('public')
+                                ->directory('logo')
+                                ->visibility('public')
                                     ->label('Logotipo')
                                     ->image(),
                                 Forms\Components\TextInput::make('title')
@@ -55,7 +58,7 @@ class SettingCompany extends Page
                                     ->label('Descrição'),
                                 Forms\Components\TextInput::make('url')
                                     ->label('URL Site'),
-                                Forms\Components\TextInput::make('opening')
+                                Forms\Components\Textarea::make('opening')
                                     ->label('Horário de funcionamento'),
                             ]),
                         Tabs\Tab::make('Localização')
@@ -108,11 +111,11 @@ class SettingCompany extends Page
                             ]),
                         Tabs\Tab::make('CEO')
                             ->schema([
-                                Forms\Components\TextInput::make('metatitle')
+                                Forms\Components\Textarea::make('metatitle')
                                     ->label('Meta Título'),
-                                Forms\Components\TextInput::make('metakeyword')
+                                Forms\Components\Textarea::make('metakeyword')
                                     ->label('Meta Palavras Chave'),
-                                Forms\Components\TextInput::make('metadescription')
+                                Forms\Components\Textarea::make('metadescription')
                                     ->label('Meta Descrição'),
                             ]),
                     ])->activeTab(1)
@@ -151,15 +154,6 @@ class SettingCompany extends Page
     protected function getFormActions(): array
     {
         return [
-            Action::make('Gravar Ordens no Site')
-                ->icon('heroicon-m-pencil-square')
-                ->button()
-                ->labeledFrom('md'),
-            Action::make('Gravar Usuários no Site')
-                ->icon('heroicon-m-pencil-square')
-                ->button()
-                ->action(fn () => $this->getDataOrder())
-                ->labeledFrom('md'),
             Action::make('save')
                 ->label(__('filament-panels::resources/pages/edit-record.form.actions.save.label'))
                 ->submit('save'),

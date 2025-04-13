@@ -3,13 +3,22 @@
 namespace App\Livewire;
 
 use App\Models\Category;
+use App\Models\Setting;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Livewire\Component;
 
 class ProductPage extends Component
 {
     public $active;
     public $catSelected = null;
-
+    
+    public function mount(){
+        $momeSEO = Setting::first();
+        SEOMeta::setTitle($momeSEO->metatitle);
+        SEOMeta::setDescription($momeSEO->metadescription);
+        SEOMeta::addKeyword($momeSEO->metakeyword);
+    }
     public function render()
     {
         $categories = Category::with('products')->where('type', 'product')->get();

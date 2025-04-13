@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Filament\Navigation\MenuItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class AddUserMenuItems
@@ -16,12 +17,12 @@ class AddUserMenuItems
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->check()) {
+        if (!Auth::check()) {
             return $next($request);
         }
 
         filament()->getCurrentPanel()->userMenuItems([
-            'profile' => MenuItem::make()->label(auth()->user()->name)
+            'profile' => MenuItem::make()->label(Auth::user()->name)
         ]);
 
         return $next($request);

@@ -2,7 +2,9 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Auth\CustomLogin;
 use App\Http\Middleware\AddUserMenuItems;
+use App\Http\Middleware\UserIsCustomer;
 use App\Models\Setting;
 use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
@@ -30,7 +32,7 @@ class ClientePanelProvider extends PanelProvider
             ->maxContentWidth('full')
             ->id('cliente')
             ->path('painel')
-            ->login()
+            ->login(CustomLogin::class)
             ->colors([
                 'primary' => "#0C356A",
             ])
@@ -61,7 +63,7 @@ class ClientePanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                AddUserMenuItems::class,
+                AddUserMenuItems::class
             ])
             ->authMiddleware([
                 Authenticate::class,

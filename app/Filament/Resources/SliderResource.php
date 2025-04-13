@@ -35,6 +35,9 @@ class SliderResource extends Resource
                     ->label('Descrição')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
+                    ->disk('public')
+                    ->directory('slides')
+                    ->visibility('public')
                     ->label('Imagem')
                     ->image()
                     ->required()

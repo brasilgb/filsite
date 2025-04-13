@@ -55,8 +55,14 @@ class CategoryResource extends Resource
                             ->columnSpanFull(),
                         Grid::make()->schema([
                             Forms\Components\FileUpload::make('thumbnail')
+                                ->disk('public')
+                                ->directory('tumbnails')
+                                ->visibility('public')
                                 ->image(),
                             Forms\Components\FileUpload::make('featured')
+                                ->disk('public')
+                                ->directory('categories')
+                                ->visibility('public')
                                 ->label('Imagem Destacada')
                                 ->image()
                         ])->columns(2),

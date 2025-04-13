@@ -38,7 +38,7 @@ class ContactCompany extends Page
             $this->form->fill($contactData->toArray());
         }
     }
-    
+
     public function form(Form $form): Form
     {
         return $form
@@ -54,6 +54,9 @@ class ContactCompany extends Page
                             ->rules(['required'])
                             ->columnSpanFull(),
                         Forms\Components\FileUpload::make('featured')
+                            ->disk('public')
+                            ->directory('contact')
+                            ->visibility('public')
                             ->label('Imagem destacada')
                             ->image()
                     ]),

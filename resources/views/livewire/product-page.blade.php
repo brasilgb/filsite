@@ -50,15 +50,29 @@
                             class="w-full md:max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm">
                             <img class="p-4 rounded-t-lg" src={{ asset('storage/' . $srv->featured) }}
                                 alt="srv image" />
-                            <div class="px-5 pb-5">
+                            <div class="px-4 pb-5">
                                 <p class="text-sm text-gray-500">{{ $srv->brand }}</p>
                                 <h5 class="text-xl font-semibold tracking-tight text-gray-900">{{ $srv->title }}
                                 </h5>
+
                                 <div class="flex items-center mt-2.5 mb-5">
-                                    <del class="text-[#CA0156] text-xs font-semibold px-1.5 py-0.5 rounded-sm ms-3">R$
-                                        {{ $srv->valnormal }}</del>
-                                    <span class="text-blue-800 text-lg font-semibold px-1.5 py-0.5 rounded-full ms-3">R$
-                                        {{ $srv->valpromo }}</span>
+                                    @if ($srv->valpromo > '0')
+                                        <div>
+                                            <del
+                                                class="text-[#CA0156] text-xs font-semibold px-1.5 py-0.5 rounded-sm ms-3">R$
+                                                {{ $srv->valnormal }}</del>
+                                            <span
+                                                class="text-blue-800 text-lg font-semibold px-1.5 py-0.5 rounded-full ms-3">R$
+                                                {{ $srv->valpromo }}</span>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="flex items-center justify-end mt-2.5 mb-5">
+                                    @if ($srv->valnormal > '0')
+                                        <span
+                                            class="text-blue-800 text-lg font-semibold px-1.5 py-0.5 rounded-full ms-3">R$
+                                            {{ $srv->valnormal }}</span>
+                                    @endif
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <a href="/produtos/detalhes/{{ $srv->slug }}"
@@ -84,15 +98,28 @@
                             class="w-full md:max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm">
                             <img class="p-4 rounded-t-lg" src={{ asset('storage/' . $srv->featured) }}
                                 alt="srv image" />
-                            <div class="px-3 pb-5">
+                            <div class="px-4 pb-5">
                                 <p class="text-sm text-gray-500">{{ $srv->brand }}</p>
                                 <h5 class="text-xl font-semibold tracking-tight text-gray-900">{{ $srv->title }}
                                 </h5>
                                 <div class="flex items-center mt-2.5 mb-5">
-                                    <del class="text-[#CA0156] text-xs font-semibold px-1.5 py-0.5 rounded-sm ms-3">R$
-                                        {{ $srv->valnormal }}</del>
-                                    <span class="text-blue-800 text-lg font-semibold px-1.5 py-0.5 rounded-full ms-3">R$
-                                        {{ $srv->valpromo }}</span>
+                                    @if ($srv->valpromo > '0')
+                                        <div>
+                                            <del
+                                                class="text-[#CA0156] text-xs font-semibold px-1.5 py-0.5 rounded-sm ms-3">R$
+                                                {{ $srv->valnormal }}</del>
+                                            <span
+                                                class="text-blue-800 text-lg font-semibold px-1.5 py-0.5 rounded-full ms-3">R$
+                                                {{ $srv->valpromo }}</span>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="flex items-center justify-end mt-2.5 mb-5">
+                                    @if ($srv->valnormal > '0')
+                                        <span
+                                            class="text-blue-800 text-lg font-semibold px-1.5 py-0.5 rounded-full ms-3">R$
+                                            {{ $srv->valnormal }}</span>
+                                    @endif
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <a href="/produtos/detalhes/{{ $srv->slug }}"

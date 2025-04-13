@@ -3,6 +3,9 @@
 namespace App\Livewire;
 
 use App\Models\Category;
+use App\Models\Service;
+use App\Models\Setting;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Http\Request;
 use Livewire\Component;
 
@@ -11,6 +14,15 @@ class ServicePage extends Component
 
     public $allservices = [];
     public $active;
+    public $numwhats;
+    public function mount(){
+        $momeSEO = Setting::first();
+        SEOMeta::setTitle($momeSEO->metatitle);
+        SEOMeta::setDescription($momeSEO->metadescription);
+        SEOMeta::addKeyword($momeSEO->metakeyword);
+        $this->numwhats = $momeSEO->whatsapp;
+    }
+    
     public function servicesall($id)
     {
         $this->active = $id;

@@ -3,6 +3,8 @@
 namespace App\Providers\Filament;
 
 use App\Http\Middleware\AddUserMenuItems;
+use App\Http\Middleware\UserIsAdmin;
+use App\Http\Middleware\VerifyIsAdmin;
 use App\Models\Setting;
 use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
@@ -24,8 +26,8 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->maxContentWidth('full')
-            ->default()
+        ->maxContentWidth('full')
+        ->default()
             ->id('admin')
             ->path('admin')
             ->colors([
@@ -67,6 +69,7 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
                 AddUserMenuItems::class,
+                VerifyIsAdmin::class
             ])
             ->authMiddleware([
                 Authenticate::class,

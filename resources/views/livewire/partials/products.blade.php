@@ -8,20 +8,32 @@
                 @foreach ($products as $product)
                     <div data-aos="fade-out" class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm">
                         <a href="#">
-                            <img class="p-8 rounded-t-lg" src={{ asset('storage/' . $product->featured) }}
+                            <img class="p-4 rounded-t-lg" src={{ asset('storage/' . $product->featured) }}
                                 alt="product image" />
                         </a>
-                        <div class="px-5 pb-5">
+                        <div class="px-4 pb-5">
                             <p class="text-sm text-gray-500">{{ $product->brand }}</p>
                             <a href="#">
                                 <h5 class="text-xl font-semibold tracking-tight text-gray-900">{{ $product->title }}
                                 </h5>
                             </a>
+
                             <div class="flex items-center mt-2.5 mb-5">
-                                <del class="text-[#CA0156] text-xs font-semibold px-1.5 py-0.5 rounded-sm ms-3">R$
-                                    {{ $product->valnormal }}</del>
-                                <span class="text-blue-800 text-lg font-semibold px-1.5 py-0.5 rounded-full ms-3">R$
-                                    {{ $product->valpromo }}</span>
+                                @if ($product->valpromo > '0')
+                                    <div>
+                                        <del class="text-[#CA0156] text-xs font-semibold px-1.5 py-0.5 rounded-sm ms-3">R$
+                                            {{ $product->valnormal }}</del>
+                                        <span
+                                            class="text-blue-800 text-lg font-semibold px-1.5 py-0.5 rounded-full ms-3">R$
+                                            {{ $product->valpromo }}</span>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="flex items-center justify-end mt-2.5 mb-5">
+                                @if ($product->valnormal > '0')
+                                    <span class="text-blue-800 text-lg font-semibold px-1.5 py-0.5 rounded-full ms-3">R$
+                                        {{ $product->valnormal }}</span>
+                                @endif
                             </div>
                             <div class="flex items-center justify-between">
                                 <a href="/produtos/detalhes/{{ $product->slug }}"

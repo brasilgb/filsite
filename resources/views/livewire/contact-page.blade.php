@@ -90,7 +90,7 @@
                                 <p class="mt-2 text-sm text-gray-500">Se preferir ligue-nos.
                                 </p>
                                 <p class="mt-2 text-sm text-blue-500">{{ $settings->celular }}
-                                    @if ($settings->telephone)
+                                    @if ($settings->telephone <> '(00) 0000-0000' )
                                         / {{ $settings->telephone }}
                                     @endif
                                 </p>

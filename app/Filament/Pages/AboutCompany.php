@@ -57,6 +57,9 @@ class AboutCompany extends Page
                             ->rules(['required'])
                             ->columnSpanFull(),
                         Forms\Components\FileUpload::make('featured')
+                            ->disk('public')
+                            ->directory('about')
+                            ->visibility('public')
                             ->label('Imagem destacada')
                             ->image()
                     ]),

@@ -29,6 +29,9 @@ class BrandResource extends Resource
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('thumbnail')
+                    ->disk('public')
+                    ->directory('brands')
+                    ->visibility('public')
                     ->label('Logo fabricante')
                     ->image()
                     ->required()

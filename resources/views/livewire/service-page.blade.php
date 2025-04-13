@@ -52,7 +52,7 @@
                                 </h5>
                                 <p class="mb-4 font-normal text-gray-700">{!! $srv->content !!}</p>
                                 <div class="mt-6 flex justify-end">
-                                    <a href="https://api.whatsapp.com/send?phone=5551995179173&text=Gostaria de um orçamento sobre "
+                                    <a href="https://api.whatsapp.com/send?phone={{ $numwhats }}&text=Gostaria de um orçamento sobre {{ $srv->title }}"
                                         class="inline-flex items-center gap-4 px-3 py-2 text-sm font-medium text-center text-white bg-[#25D366] hover:bg-[#25D366e3] rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300">
                                         Solicite orçamento
                                         <svg fill="#ffffff" height="20px" width="20px" version="1.1" id="Layer_1"
@@ -92,7 +92,7 @@
                                 </h5>
                                 <p class="mb-4 font-normal text-gray-700">{!! $srv->content !!}</p>
                                 <div class="mt-6 flex justify-end">
-                                    <a href="https://api.whatsapp.com/send?phone=5551995179173&text=Gostaria de um orçamento sobre "
+                                    <a href="https://api.whatsapp.com/send?phone={{ $numwhats }}&text=Gostaria de um orçamento sobre {{ $srv->title }}"
                                         class="inline-flex items-center gap-4 px-3 py-2 text-sm font-medium text-center text-white bg-[#25D366] hover:bg-[#25D366e3] rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300">
                                         Solicite orçamento
                                         <svg fill="#ffffff" height="20px" width="20px" version="1.1" id="Layer_1"
