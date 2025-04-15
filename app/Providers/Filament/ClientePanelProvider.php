@@ -33,13 +33,13 @@ class ClientePanelProvider extends PanelProvider
             ->id('cliente')
             ->path('painel')
             ->login(CustomLogin::class)
+            ->profile()
             ->colors([
                 'primary' => "#0C356A",
             ])
             ->theme(asset('css/filament/admin/theme.css'))
             ->font('Poppins', provider: GoogleFontProvider::class)
             ->topNavigation()
-            ->profile()
             ->brandName(Setting::first()->title)
             ->brandLogo(fn() => view('filament.admin.logo', ['settings' => Setting::first()]))
             ->favicon(asset('images/logo.png'))
@@ -63,12 +63,16 @@ class ClientePanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                AddUserMenuItems::class
             ])
             ->authMiddleware([
                 Authenticate::class,
             ])
             ->userMenuItems([
+                MenuItem::make()
+                ->label('Admin')
+                ->icon('heroicon-o-cog-6-tooth')
+                ->url('/admin')
+                ->visible(fn (): bool => auth()->user()->is_admin),
                 'logout' => MenuItem::make()->label('Sair'),
             ])
             ->renderHook(

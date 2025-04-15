@@ -22,7 +22,7 @@ class AddUserMenuItems
         }
 
         filament()->getCurrentPanel()->userMenuItems([
-            'profile' => MenuItem::make()->label(Auth::user()->name)
+            // 'profile' => MenuItem::make()->label(Auth::user()->name)
         ]);
 
         return $next($request);

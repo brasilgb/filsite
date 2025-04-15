@@ -6,6 +6,7 @@ use App\Http\Middleware\AddUserMenuItems;
 use App\Http\Middleware\UserIsAdmin;
 use App\Http\Middleware\VerifyIsAdmin;
 use App\Models\Setting;
+use App\Models\User;
 use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -26,8 +27,8 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-        ->maxContentWidth('full')
-        ->default()
+            ->maxContentWidth('full')
+            ->default()
             ->id('admin')
             ->path('admin')
             ->colors([
@@ -68,7 +69,6 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                AddUserMenuItems::class,
                 VerifyIsAdmin::class
             ])
             ->authMiddleware([
@@ -77,7 +77,7 @@ class AdminPanelProvider extends PanelProvider
             ->userMenuItems([
                 MenuItem::make()
                     ->label('Usuário')
-                    // ->url(fn (): string => User::getUrl())
+                    ->url('/painel')
                     ->icon('heroicon-o-cog-6-tooth'),
                 'logout' => MenuItem::make()->label('Sair'),
             ])
@@ -85,7 +85,7 @@ class AdminPanelProvider extends PanelProvider
                 // This line tells us where to render it
                 'panels::sidebar.footer',
                 // This is the view that will be rendered
-                fn () => view('filament.customFooter'),
+                fn() => view('filament.customFooter'),
             )->spa();
     }
 }
