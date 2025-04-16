@@ -19,6 +19,7 @@ use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Filters\QueryBuilder;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class PendingOrders extends Page implements HasTable
 {
@@ -35,7 +36,7 @@ class PendingOrders extends Page implements HasTable
     public static function table(Table $table): Table
     {
         return $table
-            ->query(Order::query()->where('status', '<>', 'Entregue ao Cliente')->where('client_id', auth()->user()->client_id))
+            ->query(Order::query()->where('status', '<>', 'Entregue ao Cliente')->where('client_id', Auth::user()->client_id))
             ->columns([
                 Tables\Columns\TextColumn::make('id')
                     ->label('N° OS')

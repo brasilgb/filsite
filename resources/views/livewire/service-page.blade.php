@@ -28,7 +28,7 @@
     @if (count($categories) > 0)
         @foreach ($categories as $category)
             @if (is_null($category->category_id))
-                <section class="container m-auto py-2">
+                <section class="container m-auto py-2 px-4">
                     <div class=" text-3xl font-light text-[#162131]">
                         {{ $category->name }}<span class="text-base"> / </span>{{ $categoryActive->name }}
                     </div>
@@ -45,7 +45,7 @@
             @foreach ($allservices as $service)
                 @if (count($service->services) > 0)
                     @foreach ($service->services as $srv)
-                        <div data-aos="fade-out" class=" bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <div data-aos="fade-out" class=" bg-white border border-gray-200 rounded-lg shadow-sm px-4">
                             <img class="rounded-t-lg" src={{ asset('storage/' . $srv->featured) }} alt="" />
                             <div class="p-5">
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ $srv->title }}
@@ -85,7 +85,7 @@
             @foreach ($services as $service)
                 @if (count($service->services) > 0)
                     @foreach ($service->services as $srv)
-                        <div data-aos="fade-out" class=" bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <div data-aos="fade-out" class=" bg-white border border-gray-200 rounded-lg shadow-sm px-4">
                             <img class="rounded-t-lg" src={{ asset('storage/' . $srv->featured) }} alt="" />
                             <div class="p-5">
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ $srv->title }}

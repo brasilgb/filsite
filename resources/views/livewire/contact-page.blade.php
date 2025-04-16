@@ -5,7 +5,7 @@
                 <img class="object-cover h-auto w-full" src={{ asset('storage/' . $contact->featured) }} alt="">
             </div>
         </header>
-        <section class="container m-auto py-16">
+        <section class="container m-auto py-16 px-4">
             <div class=" text-3xl font-light text-[#162131]">
                 {{ $contact->title }}
             </div>

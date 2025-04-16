@@ -11,7 +11,7 @@
             @endforeach
         </header>
     @endif
-    <section class="container m-auto py-16">
+    <section class="container m-auto py-16 px-4">
         <div class=" text-3xl font-light text-[#162131]">
             {{ $product->title }}
         </div>

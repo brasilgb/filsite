@@ -10,7 +10,4 @@ class Dashboard extends \Filament\Pages\Dashboard
 
     protected static ?string $navigationLabel = 'Dashboard';
 
-
-
-    
 }

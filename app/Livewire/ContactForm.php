@@ -37,7 +37,7 @@ class ContactForm extends Component
 
         $validateDate = $this->validate();
         try {
-            Mail::to('contato@megb.com.br')->send(new FedbackMail($validateDate));
+            Mail::to('contato@eplusteutonia.com.br')->send(new FedbackMail($validateDate));
             Session()->flash('success', 'Mensagem enviada com sucesso!');
         } catch (\Throwable $th) {
             Session()->flash('error', 'Falha ao enviar mensagem. Por favor tente mais tarde!');

@@ -26,7 +26,7 @@ class FedbackMail extends Mailable
      */
     public function envelope(): Envelope
     {
-        $subject = 'Envio de formulário de contato'. $this->contactData['name'];
+        $subject = 'Envio de formulário de contato '. $this->contactData['name'];
         return new Envelope(
             subject: $subject,
         );
