@@ -3,6 +3,6 @@
         <a href="#" class="hover:underline">EPlus</a>.
     </span>
     <span class="text-xs text-gray-500 sm:text-center dark:text-gray-400">
-        <a href="#" class="hover:underline">MEGB</a>
+        <a href="https://megb.com.br" class="hover:underline">MEGB</a>
     </span>
 </footer>
