@@ -55,7 +55,9 @@ class UserResource extends Resource
                     ->dehydrated(false)
                     ->rules(['min:8']),
                 // ,
-                Forms\Components\Toggle::make('active')
+                Forms\Components\Toggle::make('is_admin')
+                    ->label('Administrador'),
+                Forms\Components\Toggle::make('is_active')
                     ->label('Ativar usuário'),
 
             ]);
@@ -69,7 +71,7 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\ToggleColumn::make('active')
+                Tables\Columns\ToggleColumn::make('is_active')
                     ->label('Ativo'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Cadastro')
