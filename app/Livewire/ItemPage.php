@@ -14,10 +14,10 @@ class ItemPage extends Component
         $slug = $request->slug;
         $product = Product::where('slug', $slug)->first();
 
-        SEOTools::setCanonical('https://eplusteutonia.com.br/produtos/detalhes/' . $product->title);
+        SEOTools::setCanonical('https://eplusteutonia.com.br/produtos/detalhes/' . $product->slug);
         SEOTools::opengraph()->setTitle($product->title);
         SEOTools::opengraph()->setDescription($product->summary);
-        SEOTools::opengraph()->setUrl('https://eplusteutonia.com.br/produtos/detalhes/' . $product->title);
+        SEOTools::opengraph()->setUrl('https://eplusteutonia.com.br/produtos/detalhes/' . $product->slug);
         SEOTools::opengraph()->addImage('https://eplusteutonia.com.br/storage/' . $product->featured, ['height' => 1200, 'width' => 630]);
         SEOTools::opengraph()->addProperty('locale', 'pt-br');
     }
