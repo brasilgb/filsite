@@ -20,6 +20,7 @@ class ItemPage extends Component
         SEOTools::opengraph()->setUrl('https://eplusteutonia.com.br/produtos/detalhes/' . $product->slug);
         SEOTools::opengraph()->addImage('https://eplusteutonia.com.br/storage/' . $product->featured, ['height' => 1200, 'width' => 630]);
         SEOTools::opengraph()->addProperty('locale', 'pt-br');
+        SEOTools::opengraph()->addProperty('type', 'Article');
     }
 
     public function render(Request $request)
