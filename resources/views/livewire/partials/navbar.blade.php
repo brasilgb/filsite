@@ -118,7 +118,7 @@
                         @click="navOpen = false">Contato</a>
                 </li>
                 <li class="md:pl-10">
-                    <a href="/painel"
+                    <a href={{ Auth::user()->is_admin ? '/admin' : '/painel' }}
                         class="text-slate-50 md:text-white md:border md:border-[#008cff] md:bg-[#007AFF] md:shadow-md rounded-md px-3 py-1.5">
                         @auth
                             Painel de controle
