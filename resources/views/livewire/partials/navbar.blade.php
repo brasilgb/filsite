@@ -103,7 +103,7 @@
                         @click="navOpen = false">Serviços</a>
                 </li>
                 <li>
-                    <a href="/produtos" wire:navigate class="md:text-slate-50 text-slate-50 px-3 py-1.5"
+                    <a href="/produtos" class="md:text-slate-50 text-slate-50 px-3 py-1.5"
                         wire:current="md:bg-[#CA0156] md:border md:border-[#eb0766] md:text-white md:shadow-md drop-shadow-md rounded-md"
                         @click="navOpen = false">Produtos</a>
                 </li>
