@@ -13,7 +13,7 @@ class OrderPushController extends Controller
 {
     public function getStatus($status)
     {
-switch ($status) {
+        switch ($status) {
             case 1:
                 return 'Ordem Aberta';
                 break;
@@ -44,7 +44,7 @@ switch ($status) {
     public function InsertOrder(Request $request)
     {
         $data = $request->orders;
-        // return response()->json([$data]);
+
         foreach (array_chunk($data, 500) as $ordens) {
             foreach ($ordens as $ordem) {
                 Order::updateOrCreate(
@@ -60,12 +60,45 @@ switch ($status) {
                         "cost" => $ordem['custo'] ? $ordem['custo'] : 0,
                         "valueservice" => $ordem['valservico'] ? $ordem['valservico'] : 0,
                         "valueparts" => $ordem['valpecas'] ? $ordem['valpecas'] : 0,
-                        "dtentry" => $ordem['created_at'],
+                        "dtentry" => $ordem['created_at'] ? $ordem['created_at'] : null,
                         "dtdelivery" => $ordem['dtentrega'] ? $ordem['dtentrega'] : null,
                         "status" => $this->getStatus($ordem['status'])
                     ]
                 );
             }
+        }
+        return response()->json([
+            "response" => [
+                "message" => "Dados das ordens inseridos sucesso!",
+                "success" => true,
+                "status" => 201,
+            ],
+        ], 201);
+    }
+
+    public function InsertOneOrder(Request $request)
+    {
+        $data = $request->orders;
+
+        foreach ($data as $ordem) {
+            Order::updateOrCreate(
+                [
+                    'id' => $ordem['id']
+                ],
+                [
+                    "client_id" => $ordem['cliente_id'],
+                    "details" => $ordem['detalhes'],
+                    "defect" => $ordem['defeito'],
+                    "descbudget" => $ordem['descorcamento'],
+                    "valuebudget" => $ordem['valorcamento'] ? $ordem['valorcamento'] : 0,
+                    "cost" => $ordem['custo'] ? $ordem['custo'] : 0,
+                    "valueservice" => $ordem['valservico'] ? $ordem['valservico'] : 0,
+                    "valueparts" => $ordem['valpecas'] ? $ordem['valpecas'] : 0,
+                    "dtentry" => $ordem['created_at'],
+                    "dtdelivery" => $ordem['dtentrega'] ? $ordem['dtentrega'] : null,
+                    "status" => $this->getStatus($ordem['status'])
+                ]
+            );
         }
         return response()->json([
             "response" => [

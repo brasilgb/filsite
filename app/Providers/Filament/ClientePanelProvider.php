@@ -3,6 +3,8 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Auth\CustomLogin;
+use App\Filament\Cliente\Pages\Dashboard;
+use App\Filament\Cliente\Widgets\KpiCustomer;
 use App\Http\Middleware\AddUserMenuItems;
 use App\Http\Middleware\UserIsCustomer;
 use App\Models\Setting;
@@ -46,12 +48,13 @@ class ClientePanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Cliente/Resources'), for: 'App\\Filament\\Cliente\\Resources')
             ->discoverPages(in: app_path('Filament/Cliente/Pages'), for: 'App\\Filament\\Cliente\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+                Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Cliente/Widgets'), for: 'App\\Filament\\Cliente\\Widgets')
             ->widgets([
-                // Widgets\AccountWidget::class,
-                // Widgets\FilamentInfoWidget::class,
+                KpiCustomer::class,
+                Widgets\AccountWidget::class,
+                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -69,10 +72,10 @@ class ClientePanelProvider extends PanelProvider
             ])
             ->userMenuItems([
                 MenuItem::make()
-                ->label('Admin')
-                ->icon('heroicon-o-cog-6-tooth')
-                ->url('/admin')
-                ->visible(fn (): bool => auth()->user()->is_admin),
+                    ->label('Admin')
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->url('/admin')
+                    ->visible(fn(): bool => auth()->user()->is_admin),
                 'logout' => MenuItem::make()->label('Sair'),
             ])
             ->renderHook(
