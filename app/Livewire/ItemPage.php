@@ -14,6 +14,7 @@ class ItemPage extends Component
         $slug = $request->slug;
         $product = Product::where('slug', $slug)->first();
 
+        SEOTools::setCanonical('https://eplusteutonia.com.br/produtos/detalhes/' . $product->title);
         SEOTools::opengraph()->setTitle($product->title);
         SEOTools::opengraph()->setDescription($product->summary);
         SEOTools::opengraph()->setUrl('https://eplusteutonia.com.br/produtos/detalhes/' . $product->title);
