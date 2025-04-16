@@ -14,16 +14,11 @@ class ItemPage extends Component
         $slug = $request->slug;
         $product = Product::where('slug', $slug)->first();
 
-        SEOTools::setTitle($product->title);
-        SEOTools::setDescription($product->summary);
         SEOTools::opengraph()->setTitle($product->title);
+        SEOTools::opengraph()->setDescription($product->summary);
         SEOTools::opengraph()->setUrl('http://localhost:8000/produtos/detalhes/' . $product->title);
-        SEOTools::opengraph()->addProperty('type', 'products');
+        SEOTools::opengraph()->addImage('http://localhost:8000/storage/' . $product->featured, ['height' => 1200, 'width' => 1200]);
         SEOTools::opengraph()->addProperty('locale', 'pt-br');
-        SEOTools::opengraph()->addProperty('locale:alternate', ['pt-pt', 'en-us']);
-        SEOTools::opengraph()->addImage('http://localhost:8000/storage/' . $product->featured, ['height' => 150, 'width' => 300]);
-        SEOTools::setCanonical('https://localhost:8000/produtos/detalhes/' . $product->title);
-        SEOTools::jsonLd()->addImage('http://localhost:8000/storage/' . $product->featured);
     }
 
     public function render(Request $request)
