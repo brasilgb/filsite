@@ -69,7 +69,7 @@ class ClientePanelProvider extends PanelProvider
             ])
             ->userMenuItems([
                 MenuItem::make()
-                    ->label('Admin')
+                    ->label('Administrativo')
                     ->icon('heroicon-o-cog-6-tooth')
                     ->url('/admin')
                     ->visible(fn(): bool => Auth::user()->is_admin),
