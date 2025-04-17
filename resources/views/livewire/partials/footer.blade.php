@@ -64,6 +64,9 @@
                 <span class="text-lg text-gray-500 text-center block">©<a
                         href="{{ $settings->url }}">{{ $settings->title }}</a> {{ date('Y') }}, Todos
                     os direitos reservados.</span>
+                    <span class="text-sm text-yellow-500 text-center block">
+                        <a href="http://megb.com.br" alt="Desenvolvido por MEGB">MEGB</a>
+                    </span>
             </div>
         </div>
     @endif

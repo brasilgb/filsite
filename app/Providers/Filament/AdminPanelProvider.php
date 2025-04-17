@@ -38,7 +38,6 @@ class AdminPanelProvider extends PanelProvider
             ->sidebarCollapsibleOnDesktop()
             ->collapsedSidebarWidth('6rem')
             ->collapsibleNavigationGroups(false)
-            // ->topNavigation()
             ->sidebarFullyCollapsibleOnDesktop()
             ->theme(asset('css/filament/admin/theme.css'))
             ->font('Poppins', provider: GoogleFontProvider::class)
