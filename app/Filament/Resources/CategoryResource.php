@@ -43,7 +43,7 @@ class CategoryResource extends Resource
                                 ->rules(['required']),
                             Forms\Components\TextInput::make('name')
                                 ->label('Categoria')
-                                ->live()
+                                ->live(debounce: 250)
                                 ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                                 ->rules(['required']),
                             Forms\Components\TextInput::make('slug')

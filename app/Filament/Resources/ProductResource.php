@@ -48,7 +48,7 @@ class ProductResource extends Resource
                         Grid::make()->schema([
                             Forms\Components\TextInput::make('title')
                                 ->label('Produto')
-                                ->live()
+                                ->live(debounce: 250)
                                 ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                                 ->rules(['required'])
                                 ->maxLength(255),

@@ -25,7 +25,7 @@ class ProductPage extends Component
     {
         $searchresult = [];
         if(strlen($this->search) >=1){
-            $searchresult = Product::where('title', 'like', '%'.$this->search.'%')->limit(10)->get();
+            $searchresult = Product::where('title', 'like', '%'.$this->search.'%')->where('active', 1)->limit(10)->get();
         }
 
         $categories = Category::with('products')->where('type', 'product')->get();

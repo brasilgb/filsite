@@ -14,8 +14,10 @@
     @livewireStyles
 </head>
 
-<body x-data="{ navOpen: false, scrolledFromTop: false }" x-init="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
-    @scroll.window="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
+<body 
+x-data="{ navOpen: false, scrolledFromTop: false }" 
+x-init="window.pageYOffset >= 20 ? scrolledFromTop = true : scrolledFromTop = false"
+    @scroll.window="window.pageYOffset >= 20 ? scrolledFromTop = true : scrolledFromTop = false"
     :class="{
         'overflow-hidden': navOpen,
         'overflow-scroll': !navOpen
@@ -23,6 +25,7 @@
     <div class="min-h-screen flex flex-col antialiased font-roboto">
         @livewire('partials.navbar')
         <main class="flex-grow">
+            <script>window.pageYOffset</script>
             {{ $slot }}
         </main>
         @livewire('partials.footer')

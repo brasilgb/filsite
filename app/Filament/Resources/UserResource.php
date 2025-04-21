@@ -89,7 +89,7 @@ class UserResource extends Resource
                         Notification::make()
                             ->success()
                             ->title('Usuário deletado')
-                            ->body('O produto foi deletado com sucesso.')
+                            ->body('O usuário foi deletado com sucesso.')
                     ),
             ])
             ->bulkActions([

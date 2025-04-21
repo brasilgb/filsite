@@ -42,7 +42,7 @@ class ServiceResource extends Resource
                                 ->searchable(),
                             Forms\Components\TextInput::make('title')
                                 ->label('Serviço')
-                                ->live()
+                                ->live(debounce: 250)
                                 ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                                 ->rules(['required'])
                                 ->maxLength(255),
