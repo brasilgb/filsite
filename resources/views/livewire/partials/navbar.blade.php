@@ -1,5 +1,5 @@
 <div class="bg-[#06364D]">
-    <div class="container  m-auto md:flex hidden items-center"
+    <div class="container h-10 m-auto md:flex hidden items-center"
         :class="{ 'h-10': !scrolledFromTop, 'h-0': scrolledFromTop }">
         <div class="flex items-center justify-around gap-7 text-xs w-full text-gray-50 ">
             <div class="flex items-center gap-2">
