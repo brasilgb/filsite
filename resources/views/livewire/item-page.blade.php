@@ -27,7 +27,7 @@
                             @if ($product->valpromo == '0' && $product->valnormal == '0')
                                 <span class="text-gray-500">Veja as condições em nossa loja</span>
                             @endif
-                            @if ($product->valpromo > '0')
+                            @if ($product->valpromo > '0' && $product->valnormal > '0')
                                 <div>
                                     <del class="text-[#CA0156] text-xs font-semibold px-1.5 py-0.5 rounded-sm ms-3">R$
                                         {{ $product->valnormal }}</del>
@@ -37,7 +37,7 @@
                             @endif
                         </div>
                         <div class="flex items-center justify-end mt-2.5 mb-5">
-                            @if ($product->valnormal > '0')
+                            @if ($product->valnormal > '0' && $product->valpromo == '0')
                                 <span class="text-blue-800 text-lg font-semibold px-1.5 py-0.5 rounded-full ms-3">R$
                                     {{ $product->valnormal }}</span>
                             @endif
