@@ -14,12 +14,14 @@ class ProductPage extends Component
     public $active;
     public $catSelected = null;
     public $search="";
+    public $watsapp="";
 
     public function mount(){
         $momeSEO = Setting::first();
         SEOMeta::setTitle($momeSEO->metatitle);
         SEOMeta::setDescription($momeSEO->metadescription);
         SEOMeta::addKeyword($momeSEO->metakeyword);
+        $this->watsapp = $momeSEO->whatsapp;
     }
     public function render()
     {
