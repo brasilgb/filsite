@@ -4,15 +4,19 @@ namespace App\Livewire;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Setting;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 use Livewire\Component;
 
 class ItemPage extends Component
 {
+    public $numwhats;
     public function mount(Request $request){
         $slug = $request->slug;
         $product = Product::where('slug', $slug)->first();
+        $momeSEO = Setting::first();
+        $this->numwhats = $momeSEO->whatsapp;
 
         SEOTools::setCanonical('https://eplusteutonia.com.br/produtos/detalhes/' . $product->slug);
         SEOTools::opengraph()->setTitle($product->title);

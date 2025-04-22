@@ -40,7 +40,7 @@
                             @endif
                         </div>
                     </div>
-                    <a href="https://api.whatsapp.com/send?phone=00&text=Gostaria de mais informações sobre {{ $product->title }}"
+                    <a href="https://api.whatsapp.com/send?phone={{ $numwhats }}&text=Gostaria de mais informações sobre {{ $product->title }}"
                         class="text-[#25D366] bg-transparent focus:ring-0 focus:outline-none text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                             class="bi bi-whatsapp" viewBox="0 0 16 16">

@@ -12,9 +12,9 @@ class ContactPage extends Component
     public function mount(){
         $aboutSEO = Contact::first();
         $momeSEO = Setting::first();
-        SEOMeta::setTitle($aboutSEO->title);
-        SEOMeta::setDescription($aboutSEO->metadescription);
-        SEOMeta::addKeyword($momeSEO->metakeyword);
+        SEOMeta::setTitle(is_null($aboutSEO) ? '' : $aboutSEO->title);
+        SEOMeta::setDescription(is_null($aboutSEO) ? '' : $aboutSEO->summary);
+        SEOMeta::addKeyword(is_null($momeSEO) ? '' : $momeSEO->metakeyword);
     } 
     
     public function render()

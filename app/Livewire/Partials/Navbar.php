@@ -10,6 +10,6 @@ class Navbar extends Component
     public function render()
     {
         $settings = Setting::first();
-        return view('livewire.partials.navbar', ['settings' => $settings]);
+        return view('livewire.partials.navbar', ['settings' => $settings ? $settings : []]);
     }
 }

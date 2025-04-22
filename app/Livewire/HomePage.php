@@ -9,11 +9,13 @@ use Livewire\Component;
 
 class HomePage extends Component
 {
+    public $numwhats;
     public function mount(){
         $momeSEO = Setting::first();
-        SEOMeta::setTitle($momeSEO->metatitle);
-        SEOMeta::setDescription($momeSEO->metadescription);
-        SEOMeta::addKeyword($momeSEO->metakeyword);
+        SEOMeta::setTitle(is_null($momeSEO) ? '' : $momeSEO->metatitle);
+        SEOMeta::setDescription(is_null($momeSEO) ? '' : $momeSEO->metadescription);
+        SEOMeta::addKeyword(is_null($momeSEO) ? '' : $momeSEO->metakeyword);
+        $this->numwhats = is_null($momeSEO) ? '' : $momeSEO->whatsapp;
     }
     
     public function render()

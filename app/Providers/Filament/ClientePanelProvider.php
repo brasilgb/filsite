@@ -39,9 +39,9 @@ class ClientePanelProvider extends PanelProvider
             ->theme(asset('css/filament/admin/theme.css'))
             ->font('Poppins', provider: GoogleFontProvider::class)
             ->topNavigation()
-            ->brandName(Setting::first()->title)
+            // ->brandName(Setting::first()->title)
             ->brandLogo(fn() => view('filament.admin.logo', ['settings' => Setting::first()]))
-            ->favicon(asset('images/logo.png'))
+            // ->favicon(asset('images/logo.png'))
             ->discoverResources(in: app_path('Filament/Cliente/Resources'), for: 'App\\Filament\\Cliente\\Resources')
             ->discoverPages(in: app_path('Filament/Cliente/Pages'), for: 'App\\Filament\\Cliente\\Pages')
             ->pages([

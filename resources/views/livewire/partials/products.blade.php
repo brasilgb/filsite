@@ -40,7 +40,7 @@
                                         class="text-white bg-[#CA0156] hover:bg-[#ca0155e3] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                         Detalhes
                                     </a>
-                                    <a href="https://api.whatsapp.com/send?phone=5551995179173&text=Gostaria de mais informações sobre {{ $product->title }}"
+                                    <a href="https://api.whatsapp.com/send?phone={{ $numwhats }}&text=Gostaria de mais informações sobre {{ $product->title }}"
                                         class="text-[#25D366] bg-transparent focus:ring-0 focus:outline-none p-2.5 text-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                                             fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
