@@ -13,15 +13,15 @@ class KpiCustomer extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Ordens Abertas', Order::where('client_id', Auth::user()->id)->where('status', 1)->count())
+            Stat::make('Ordens Abertas', Order::where('client_id', Auth::user()->client_id)->where('status', 'Ordem aberta')->count())
             ->description('Ordens aguardando para conserto')
             ->descriptionIcon('heroicon-o-wrench-screwdriver', IconPosition::Before)
             ->color('danger'),
-            Stat::make('Ordens fechadas', Order::where('client_id', Auth::user()->id)->where('status', 8)->count())
+            Stat::make('Ordens fechadas', Order::where('client_id', Auth::user()->client_id)->where('status', 'Ordem fechada')->count())
             ->description('Ordens fechadas aguardando retirada')
             ->descriptionIcon('heroicon-o-wrench-screwdriver', IconPosition::Before)
             ->color('success'),
-            Stat::make('Orçamentos gerados', Order::where('client_id', Auth::user()->id)->where('status', 3)->count())
+            Stat::make('Orçamentos gerados', Order::where('client_id', Auth::user()->client_id)->where('status', 'Orçamento gerado')->count())
             ->description('Orçamentos gerados pela Eplus')
             ->descriptionIcon('heroicon-o-wrench-screwdriver', IconPosition::Before)
             ->color('info'),
