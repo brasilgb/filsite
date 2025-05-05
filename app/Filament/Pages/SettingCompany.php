@@ -147,10 +147,6 @@ class SettingCompany extends Page
         //     ->send();
     }
 
-    public function getDataOrder() {
-        dd('feito');
-    }
-
     protected function getFormActions(): array
     {
         return [

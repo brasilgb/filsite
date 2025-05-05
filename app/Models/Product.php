@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
-    public function categories(): BelongsToMany
+    public function categories(): belongsToMany
     {
         return $this->belongsToMany(Category::class);
     }

@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Setting;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 
 class ItemPage extends Component
@@ -26,12 +27,16 @@ class ItemPage extends Component
         SEOTools::opengraph()->addProperty('locale', 'pt-br');
         SEOTools::opengraph()->addProperty('type', 'website');
     }
-
+    public function voltar()
+       {
+           return redirect()->to(url()->previous());
+       }
     public function render(Request $request)
     {
         $slug = $request->slug;
-        $product = Product::where('slug', $slug)->first();
+        $product = Product::with('categories')->where('slug', $slug)->first();
+        
         $categories = Category::with('products')->where('type', 'product')->get();
-        return view('livewire.item-page', ['product' => $product, 'categories' => $categories]);
+        return view('livewire.item-page', ['product' => $product, 'categories' => $categories, 'slug'=> $slug]);
     }
 }

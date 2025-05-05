@@ -19,7 +19,7 @@
                         @if (!is_null($category->category_id))
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endif
-                    @endforeach
+                    @endforeach 
                 </select>
                 <form action="">
                     <input wire:model.live="search" class="bg-white px-4 py-2 rounded-md" type="search"
@@ -166,7 +166,8 @@
                                     <div class="px-4 pb-5">
                                         <p class="text-xs text-gray-500">{{ $srv->brand }}</p>
                                         <h5 class="text-base font-semibold tracking-tight text-gray-900">
-                                            {{ $srv->title }}</h5>
+                                            {{ $srv->title }}
+                                        </h5>
 
                                         <div class="flex items-center mt-2.5 mb-5">
                                             @if ($srv->valpromo > '0' && $srv->valnormal > '0')
