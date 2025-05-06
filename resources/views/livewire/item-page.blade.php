@@ -12,14 +12,6 @@
         </header>
     @endif
     <section class="container m-auto py-16 px-4">
-
-        <a href="#" wire:click="voltar" >Voltar</a>
-
-        <div>
-            @foreach ($product->categories as $catid)
-                {{ $catid }}
-            @endforeach
-           
         <div class=" text-3xl font-light text-[#162131]">
             {{ $product->title }}
         </div>

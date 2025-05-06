@@ -53,11 +53,6 @@
             {{ count($searchresult) }} produtos.</div>
     @endif
 
-    @if($productDetail)
-        {{ $productDetail }}
-    @endif
-    
-    @if (!$productDetail)
         <div class="container m-auto grid md:grid-cols-5 gap-4 py-10 md:px-0 px-2">
             @if (count($searchresult) > 0)
                 @foreach ($searchresult as $result)
@@ -90,10 +85,10 @@
                                     @endif
                                 </div>
                                 <div class="flex items-center justify-between">
-                                    <button wire:click="detailProduct('{{ $result->slug }}')"
+                                    <a href="/produtos/detalhes/{{ $result->slug }}"
                                         class="text-white bg-[#CA0156] hover:bg-[#ca0155e3] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                         Detalhes
-                                    </button>
+                                    </a>
                                     <a href="https://api.whatsapp.com/send?phone={{ $numwhats }}&text=Gostaria de mais informações sobre {{ $result->title }}"
                                         class="text-[#25D366] bg-transparent focus:ring-0 focus:outline-none p-2.5 text-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
@@ -142,10 +137,10 @@
                                                 @endif
                                             </div>
                                             <div class="flex items-center justify-between">
-                                                <button wire:click="detailProduct('{{ $srv->slug }}')"
+                                                <a href="/produtos/detalhes/{{ $srv->slug }}"
                                                     class="text-white bg-[#CA0156] hover:bg-[#ca0155e3] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                                     Detalhes
-                                                </button>
+                                                </a>
                                                 <a href="https://api.whatsapp.com/send?phone={{ $numwhats }}&text=Gostaria de mais informações sobre {{ $srv->title }}"
                                                     class="text-[#25D366] bg-transparent focus:ring-0 focus:outline-none p-2.5 text-center">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="30"
@@ -197,10 +192,10 @@
                                                 @endif
                                             </div>
                                             <div class="flex items-center justify-between">
-                                                <button wire:click="detailProduct('{{ $srv->slug }}')"
+                                                <a href="/produtos/detalhes/{{ $srv->slug }}"
                                                     class="text-white bg-[#CA0156] hover:bg-[#ca0155e3] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                                     Detalhes
-                                                </button>
+                                                </a>
                                                 <a href="https://api.whatsapp.com/send?phone={{ $numwhats }}&text=Gostaria de mais informações sobre {{ $srv->title }}"
                                                     class="text-[#25D366] bg-transparent focus:ring-0 focus:outline-none p-2.5 text-center">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="30"
@@ -220,5 +215,4 @@
                 @endif
             @endif
         </div>
-    @endif
 </div>
