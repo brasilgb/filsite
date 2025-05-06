@@ -18,6 +18,7 @@
         <div class="text-sm text-slate-400 pb-6">
             {{ $product->summary }}
         </div>
+        <a href="/produtos" wire:navigate >Voltar</a>
         <div class="flex md:flex-row flex-col">
             <div class="w-auto">
                 <img src={{ asset('storage/' . $product->featured) }} alt="">

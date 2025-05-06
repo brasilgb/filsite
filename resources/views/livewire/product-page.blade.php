@@ -52,7 +52,7 @@
         <div class="container m-auto bg-gray-100 p-2 rounded-md text-blue-600 border border-blue-300">Foram encontrados
             {{ count($searchresult) }} produtos.</div>
     @endif
-
+    
         <div class="container m-auto grid md:grid-cols-5 gap-4 py-10 md:px-0 px-2">
             @if (count($searchresult) > 0)
                 @foreach ($searchresult as $result)
@@ -85,7 +85,7 @@
                                     @endif
                                 </div>
                                 <div class="flex items-center justify-between">
-                                    <a href="/produtos/detalhes/{{ $result->slug }}"
+                                    <a wire:navigate href="/produtos/detalhes/{{ $result->slug }}"
                                         class="text-white bg-[#CA0156] hover:bg-[#ca0155e3] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                         Detalhes
                                     </a>
@@ -137,7 +137,7 @@
                                                 @endif
                                             </div>
                                             <div class="flex items-center justify-between">
-                                                <a href="/produtos/detalhes/{{ $srv->slug }}"
+                                                <a wire:navigate href="/produtos/detalhes/{{ $srv->slug }}"
                                                     class="text-white bg-[#CA0156] hover:bg-[#ca0155e3] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                                     Detalhes
                                                 </a>
@@ -192,7 +192,7 @@
                                                 @endif
                                             </div>
                                             <div class="flex items-center justify-between">
-                                                <a href="/produtos/detalhes/{{ $srv->slug }}"
+                                                <a wire:navigate href="/produtos/detalhes/{{ $srv->slug }}"
                                                     class="text-white bg-[#CA0156] hover:bg-[#ca0155e3] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                                     Detalhes
                                                 </a>

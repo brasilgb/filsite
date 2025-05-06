@@ -13,6 +13,7 @@ use Livewire\Component;
 
 class ItemPage extends Component
 {
+
     public $numwhats;
     public function mount(Request $request)
     {

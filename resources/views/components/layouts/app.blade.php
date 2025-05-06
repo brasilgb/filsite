@@ -58,5 +58,4 @@ x-init="window.pageYOffset >= 20 ? scrolledFromTop = true : scrolledFromTop = fa
         AOS.init();
     </script>
 </body>
-
 </html>

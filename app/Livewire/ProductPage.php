@@ -16,6 +16,7 @@ class ProductPage extends Component
     public $search = "";
     public $numwhats;
     public $productDetail;
+    protected $listeners = ['ProductPageData'];
 
     public function mount()
     {
@@ -25,9 +26,10 @@ class ProductPage extends Component
         SEOMeta::addKeyword(is_null($momeSEO) ? '' : $momeSEO->metakeyword);
         $this->numwhats = is_null($momeSEO) ? '' : $momeSEO->whatsapp;
     }
-
-    public function detailProduct($slug)
+    
+    public function ProductPageData($id)
     {
+        dd('$this->listeners', $id);
         $this->productDetail = Product::with('categories')->where('slug', $slug)->first();
         
     }
