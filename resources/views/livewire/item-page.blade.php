@@ -13,7 +13,7 @@
     @endif
     <section class="container m-auto py-16 px-4">
 
-        <a wire:click="voltar" >Voltar</a>
+        <a href="#" wire:click="voltar" >Voltar</a>
 
         <div>
             @foreach ($product->categories as $catid)

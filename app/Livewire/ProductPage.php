@@ -13,23 +13,32 @@ class ProductPage extends Component
 {
     public $active;
     public $catSelected = null;
-    public $search="";
+    public $search = "";
     public $numwhats;
+    public $productDetail;
 
-    public function mount(){
+    public function mount()
+    {
         $momeSEO = Setting::first();
         SEOMeta::setTitle(is_null($momeSEO) ? '' : $momeSEO->metatitle);
         SEOMeta::setDescription(is_null($momeSEO) ? '' : $momeSEO->metadescription);
         SEOMeta::addKeyword(is_null($momeSEO) ? '' : $momeSEO->metakeyword);
         $this->numwhats = is_null($momeSEO) ? '' : $momeSEO->whatsapp;
     }
+
+    public function detailProduct($slug)
+    {
+        $this->productDetail = Product::with('categories')->where('slug', $slug)->first();
+        
+    }
+
     public function render()
     {
         $searchresult = [];
-        if(strlen($this->search) >=1){
-            $searchresult = Product::where('title', 'like', '%'.$this->search.'%')->where('active', 1)->limit(10)->get();
+        if (strlen($this->search) >= 1) {
+            $searchresult = Product::where('title', 'like', '%' . $this->search . '%')->where('active', 1)->limit(10)->get();
         }
-
+        
         $categories = Category::with('products')->where('type', 'product')->get();
         $active2 = Category::with('products')->where('type', 'product')->where('category_id', '<>', null)->orderBy('id', 'ASC')->first();
         $products = Category::with('products')->where('type', 'product')->where('id', $active2->id)->get();
