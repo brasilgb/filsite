@@ -11,14 +11,26 @@
             @endforeach
         </header>
     @endif
-    <section class="container m-auto py-16 px-4">
+
+    <div class="container m-auto px-4 py-4">
+        <div x-data="{ voltar: () => window.history.back() }" class="">
+            <button x-on:click="voltar()" class="cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                    class="text-gray-500" viewBox="0 0 12 12">
+                    <path fill-rule="evenodd"
+                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <section class="container m-auto py-8 px-4">
         <div class=" text-3xl font-light text-[#162131]">
             {{ $product->title }}
         </div>
         <div class="text-sm text-slate-400 pb-6">
             {{ $product->summary }}
         </div>
-        <a href="/produtos" wire:navigate >Voltar</a>
         <div class="flex md:flex-row flex-col">
             <div class="w-auto">
                 <img src={{ asset('storage/' . $product->featured) }} alt="">

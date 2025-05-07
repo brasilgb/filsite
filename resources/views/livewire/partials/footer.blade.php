@@ -71,7 +71,15 @@
         </div>
     @endif
 
-    <a href="https://api.whatsapp.com/send?phone={{ $settings ? $settings->whatsapp: '' }}&text=Olá, gostaria de mais informações sobre os produtos e serviços." target="_blank" rel="noreferrer noopener" class="fixed bottom-4 right-4 z-50 inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25d366]">
+    <div class="fixed bottom-4 left-4 z-50 inline-flex bg-black md:w-[150px] w-[100px] shadow-lg rounded-md p-2 border-2 border-white z-50 text-center">
+        <a href="https://whatsapp.com/channel/0029VayHmUB3AzNaXog1gq1K" class="relative">
+            {{-- <p class="text-white md:text-sm text-[8px] font-semibold absolute md:top-5 top-4 w-full">Acesse o nosso</p> --}}
+            <img src="{{ asset('canal-de-ofertas.jpg') }}" />
+        </a>
+    </div>
+
+    <a href="https://api.whatsapp.com/send?phone={{ $settings ? $settings->whatsapp: '' }}&text=Olá, gostaria de mais informações sobre os produtos e serviços." target="_blank" rel="noreferrer noopener" 
+        class="fixed bottom-4 right-4 z-50 inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25d366]">
         <div class="absolute z-10 top-0 left-0 w-full h-full rounded-full bg-[#25d366] animate-ping"></div>
         <div class="relative z-20">
           <svg fill="#fff" height="24px" width="24px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 308.00 308.00" xml:space="preserve" stroke="#fff" transform="matrix(1, 0, 0, 1, 0, 0)">

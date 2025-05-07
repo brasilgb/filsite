@@ -14,9 +14,7 @@
     @livewireStyles
 </head>
 
-<body 
-x-data="{ navOpen: false, scrolledFromTop: false }" 
-x-init="window.pageYOffset >= 20 ? scrolledFromTop = true : scrolledFromTop = false"
+<body x-data="{ navOpen: false, scrolledFromTop: false }" x-init="window.pageYOffset >= 20 ? scrolledFromTop = true : scrolledFromTop = false"
     @scroll.window="window.pageYOffset >= 20 ? scrolledFromTop = true : scrolledFromTop = false"
     :class="{
         'overflow-hidden': navOpen,
@@ -25,11 +23,12 @@ x-init="window.pageYOffset >= 20 ? scrolledFromTop = true : scrolledFromTop = fa
     <div class="min-h-screen flex flex-col antialiased font-roboto">
         @livewire('partials.navbar')
         <main class="flex-grow">
-            <script>window.pageYOffset</script>
+            <script>
+                window.pageYOffset
+            </script>
             {{ $slot }}
         </main>
         @livewire('partials.footer')
-
     </div>
     @livewireScripts
     <!-- Swiper JS -->
@@ -58,4 +57,5 @@ x-init="window.pageYOffset >= 20 ? scrolledFromTop = true : scrolledFromTop = fa
         AOS.init();
     </script>
 </body>
+
 </html>
