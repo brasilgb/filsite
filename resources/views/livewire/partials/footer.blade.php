@@ -72,7 +72,7 @@
     @endif
 
     <div class="fixed bottom-4 left-4 z-50 inline-flex bg-black md:w-[150px] w-[100px] shadow-lg rounded-md p-2 border-2 border-white z-50 text-center">
-        <a href="https://whatsapp.com/channel/0029VayHmUB3AzNaXog1gq1K" class="relative">
+        <a href="https://whatsapp.com/channel/0029VayHmUB3AzNaXog1gq1K" class="relative" target="_blank">
             {{-- <p class="text-white md:text-sm text-[8px] font-semibold absolute md:top-5 top-4 w-full">Acesse o nosso</p> --}}
             <img src="{{ asset('canal-de-ofertas.jpg') }}" />
         </a>
