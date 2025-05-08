@@ -63,7 +63,7 @@
                     </a>
                 </div>
                 @if ($product->url)
-                    <div class="w-full text-center rounded-md  bg-linear-to-r from-purple-500 via-blue-400 to-pink-500">
+                    <div class="w-full text-center rounded-md bg-[#06364D]">
                         <a href={{ $product->url }} target="_blank"
                             class="text-white flex items-center justify-between gap-2 px-2 py-1">
                             Mais descrições e definições em nosso Instagram
@@ -75,8 +75,15 @@
                         </a>
                     </div>
                 @endif
-                <div class="w-full bg-[#CA0156] text-center rounded-md mt-4 py-1">
-                    <a href="/contato" class="text-gray-50">Veja as condições em nossa loja</a href="">
+                <div class="w-full bg-[#CA0156] text-center rounded-md mt-4">
+                    <a href="/contato" class="text-white flex items-center justify-between gap-2 px-2 py-1">Veja as
+                        condições em nossa loja
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                        </svg>
+                    </a>
                 </div>
             </div>
             <div class="md:flex-1 px-10">
